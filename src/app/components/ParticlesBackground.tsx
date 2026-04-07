@@ -10,7 +10,7 @@ interface Particle {
 }
 
 export function ParticlesBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -19,60 +19,57 @@ export function ParticlesBackground() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.innerWidth < 768;
+    const particleCount = prefersReducedMotion ? 0 : isMobile ? 18 : 30;
+
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
+
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Create particles
-    const particles: Particle[] = [];
-    const particleCount = 80;
+    const particles: Particle[] = Array.from({ length: particleCount }, () => ({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      size: Math.random() * 1.8 + 0.4,
+      speedX: (Math.random() - 0.5) * 0.15,
+      speedY: (Math.random() - 0.5) * 0.15,
+      opacity: Math.random() * 0.25 + 0.08,
+    }));
 
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 0.5,
-        speedX: (Math.random() - 0.5) * 0.3,
-        speedY: (Math.random() - 0.5) * 0.3,
-        opacity: Math.random() * 0.3 + 0.1
-      });
-    }
+    let animationFrameId = 0;
 
-    // Animation loop
-    let animationFrameId: number;
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-      particles.forEach(particle => {
-        // Update position
+      for (const particle of particles) {
         particle.x += particle.speedX;
         particle.y += particle.speedY;
 
-        // Wrap around edges
-        if (particle.x < 0) particle.x = canvas.width;
-        if (particle.x > canvas.width) particle.x = 0;
-        if (particle.y < 0) particle.y = canvas.height;
-        if (particle.y > canvas.height) particle.y = 0;
+        if (particle.x < 0) particle.x = window.innerWidth;
+        if (particle.x > window.innerWidth) particle.x = 0;
+        if (particle.y < 0) particle.y = window.innerHeight;
+        if (particle.y > window.innerHeight) particle.y = 0;
 
-        // Draw particle with red tint
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(220, 38, 38, ${particle.opacity})`;
         ctx.fill();
-
-        // Add a subtle red glow
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = 'rgba(220, 38, 38, 0.4)';
-      });
+      }
 
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    animate();
+    if (!prefersReducedMotion) {
+      animate();
+    }
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
@@ -83,8 +80,7 @@ export function ParticlesBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.5 }}
+      className="pointer-events-none fixed inset-0 z-0 opacity-60"
     />
   );
 }
