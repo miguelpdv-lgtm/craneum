@@ -5,14 +5,14 @@ import { SmokeEffect } from './components/SmokeEffect';
 import { EscapeRoomCard } from './components/EscapeRoomCard';
 
 // Import escape room images
-import orientExpressImg from 'figma:asset/51975ac110037abc6d45a28bff268bb98b6b33a5.png';
-import strangerThingsImg from 'figma:asset/d0663baae9a821e044b5de11ac7e5ce3f37499eb.png';
-import juegosMacabrosImg from 'figma:asset/55fbc3cd9ca2bf356479a53b77e73459465340bc.png';
+const orientExpressImg = '/img/oriente.png';
+const strangerThingsImg = '/img/stranger.png';
+const juegosMacabrosImg = '/img/juegos.png';
 
 // Import logo and mascot
-import logoImg from 'figma:asset/38aa533e23e08e4784387692bd71083918f9f3d7.png';
-import mascotKeyImg from 'figma:asset/110cbc8352dd80512ebe019511f0cfbed98e30d4.png';
-import mascotPointingImg from 'figma:asset/03aacb5acfa2769d46c6053fc830a2d600818df6.png';
+const logoImg = '/img/logo.png';
+const mascotKeyImg = '/img/mascota1.png';
+const mascotPointingImg = '/img/mascota2.png';
 
 export default function App() {
   const escapeRooms = [
