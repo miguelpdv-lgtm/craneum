@@ -222,7 +222,7 @@
     const muted = cssVar(canvas, '--fg-muted', '#5F6B68');
     ctx.clearRect(0, 0, W, H);
     ctx.lineCap = 'round';
-    const count = Math.round(W / (mode === 'antes' ? 9 : 30));
+    const count = Math.round(W / (mode === 'antes' ? 9 : 24));
     for (let i = 0; i < count; i++) {
       const x0 = ((i + 0.5) / count) * W + (rand() - 0.5) * 8;
       ctx.beginPath();
@@ -239,17 +239,25 @@
           ctx.lineTo(x, y);
         }
       } else {
-        // Definido: mechones agrupados (3 fibras por rizo) en bucles regulares
-        const d = 1.45 + rand() * 0.3, s = 7.5 + rand() * 1.5, ph = rand() * 6;
-        for (let f = 0; f < 3; f++) {
+        // Definido: tirabuzones en hélice. La mitad trasera de cada vuelta es
+        // fina y tenue, la delantera gruesa: así se lee como un rizo con volumen.
+        const A = 8 + rand() * 4, P = 20 + rand() * 8, ph = rand() * 6, sway = rand() * 6;
+        const col = i % 3 === 0 ? shine : ink;
+        const pt = (t) => {
+          const y = -10 + (t / (Math.PI * 2)) * P;
+          return [x0 + A * Math.sin(t + ph) + 6 * Math.sin(y / 140 + sway), y, Math.cos(t + ph)];
+        };
+        const tMax = ((H + 20) / P) * Math.PI * 2;
+        for (const front of [false, true]) {
+          ctx.strokeStyle = col;
+          ctx.globalAlpha = front ? 0.9 : 0.3;
+          ctx.lineWidth = front ? 2.2 : 1;
           ctx.beginPath();
-          ctx.strokeStyle = f === 1 && i % 3 === 0 ? shine : ink;
-          ctx.globalAlpha = f === 1 ? 0.85 : 0.35;
-          ctx.lineWidth = f === 1 ? 1.8 : 1;
-          for (let t = 0; t < (H / s) + 4; t += 0.12) {
-            const y = -10 + s * (t - d * Math.sin(t + ph));
-            const x = x0 + (f - 1) * 2.2 + s * d * Math.cos(t + ph);
-            t ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+          let drawing = false;
+          for (let t = 0; t < tMax; t += 0.1) {
+            const [x, y, z] = pt(t);
+            if ((z > 0) === front) { drawing ? ctx.lineTo(x, y) : ctx.moveTo(x, y); drawing = true; }
+            else drawing = false;
           }
           ctx.stroke();
         }

@@ -3,24 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sistema Marea Rizada</title>
-<meta name="description" content="Sistema de diseño de Marea Rizada, expertos en salud capilar y rizos.">
+<title>Marea Rizada</title>
+<meta name="description" content="Marea Rizada: expertos en salud capilar. Recuperamos tus rizos con diagnóstico, corte rizo a rizo y rutinas para cada patrón, del 2A al 4C.">
+<meta property="og:title" content="Marea Rizada · Recuperamos tus rizos">
+<meta property="og:description" content="Expertos en salud capilar. Diagnóstico, corte rizo a rizo y rutinas para cada patrón.">
+<link rel="icon" href="assets/marea-mark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Martian+Mono:wght@400;500;600&family=Shantell+Sans:ital,wght,BNCE,INFM,SPAC@0,300..800,-100..100,0..100,0..100;1,300..800,-100..100,0..100,0..100&display=swap">
 <link rel="stylesheet" href="design-system/tokens.css">
 <link rel="stylesheet" href="design-system/components.css">
 <link rel="stylesheet" href="design-system/motion.css">
-<link rel="stylesheet" href="site/site.css">
+<link rel="stylesheet" href="site/landing.css">
 </head>
 <body>
 
-<!-- ======================= Símbolos SVG reutilizables ======================= -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
     <clipPath id="mr-clip"><circle cx="50" cy="50" r="47"/></clipPath>
-    <!-- Isotipo provisional reconstruido desde el perfil de Instagram.
-         Colores por variable: --mark-sand, --mark-water, --mark-water2, --mark-foam -->
     <symbol id="mr-mark" viewBox="0 0 100 100">
       <g clip-path="url(#mr-clip)">
         <rect width="100" height="100" fill="var(--mark-sand, #CDAA9C)"/>
@@ -42,589 +42,264 @@
   </defs>
 </svg>
 
-<!-- ================================ Cabecera ================================ -->
-<header class="ds-header">
+<header class="lp-header">
   <div class="mr-wrap">
-    <nav class="mr-nav" aria-label="Secciones">
-      <a class="ds-brand" href="#inicio" aria-label="Marea Rizada, inicio">
-        <svg aria-hidden="true"><use href="#mr-mark"/></svg>
-        <b>Marea Rizada</b>
-      </a>
+    <nav class="mr-nav" aria-label="Principal">
+      <a class="lp-brand" href="#inicio" aria-label="Marea Rizada, inicio"><svg aria-hidden="true"><use href="#mr-mark"/></svg><b>Marea Rizada</b></a>
       <div class="mr-nav__links">
-        <a href="#esencia">Esencia</a>
-        <a href="#logo">Logo</a>
-        <a href="#color">Color</a>
-        <a href="#tipografia">Tipografía</a>
-        <a href="#rizos">Rizos</a>
-        <a href="#movimiento">Movimiento</a>
-        <a href="#componentes">Componentes</a>
-        <a href="#aplicaciones">Instagram</a>
-        <a href="#tokens">Tokens</a>
+        <a href="#patron">Tu patrón</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#metodo">Método</a>
+        <a href="#familia">Shop y Nails</a>
+        <a href="#preguntas">Preguntas</a>
       </div>
-      <button class="ds-theme" id="theme-toggle" type="button" aria-label="Cambiar tema">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
-        <span id="theme-label">Sistema</span>
-      </button>
+      <a class="mr-btn mr-btn--sm" href="https://ig.me/m/marea.rizada" target="_blank" rel="noopener">Reservar</a>
     </nav>
   </div>
 </header>
 
 <main>
-<!-- ================================= Héroe ================================= -->
-<section class="ds-hero" id="inicio">
-  <div class="mr-wrap ds-hero__grid">
-    <div class="mr-rise">
-      <span class="mr-eyebrow">Sistema de diseño · v1.0 · octubre 2026</span>
-      <h1>Marea <span class="l2 mr-ripple-text" id="hero-ripple">Rizada</span></h1>
-    </div>
-    <div class="ds-hero__aside mr-rise" style="animation-delay:.15s">
-      <p>Expertos en salud capilar. Recuperamos tus rizos. Este sistema traduce esa promesa en color, letra, forma y movimiento, con una idea guía: <strong>cada rizo es una ola</strong>.</p>
-      <div class="ds-hero__ctas">
-        <a class="mr-btn" href="#rizos">Ver la escala de rizos</a>
-        <a class="mr-btn mr-btn--secondary" href="#componentes">Componentes</a>
-      </div>
-      <div class="ds-hero__facts">
-        <span><b>2A→4C</b>9 patrones de rizo</span>
-        <span><b>3</b>marcas: salón, shop, nails</span>
-        <span><b>@marea.rizada</b>Instagram</span>
-      </div>
-    </div>
-  </div>
-  <div class="ds-hero__sea" id="hero-sea">
-    <canvas id="hero-tide" aria-hidden="true"></canvas>
-    <div class="mr-bubbles" id="hero-bubbles" aria-hidden="true"></div>
-  </div>
-</section>
-
-<!-- ================================ Esencia ================================ -->
-<section class="ds-section ds-section--deep" id="esencia">
-  <div class="mr-wrap">
-    <div class="ds-essence">
-      <div>
-        <span class="mr-eyebrow">01 · Esencia de marca</span>
-        <p class="ds-manifesto" style="margin-top:var(--sp-4)">Tu rizo no está roto. Tiene su propia <em>marea</em>: sube, baja, se encrespa y vuelve. Nosotras le devolvemos su ritmo.</p>
-      </div>
-      <div class="ds-spectrum" aria-label="Posición de la personalidad de marca">
-        <p class="ds-note">Dónde se sitúa la marca entre dos extremos. Úsalo para decidir el tono de una pieza nueva.</p>
-        <div class="ds-spectrum__row"><div class="ds-spectrum__labels"><span>Clínica</span><b>Cercana</b></div><div class="ds-spectrum__track"><span class="ds-spectrum__dot" style="--at:72%"></span></div></div>
-        <div class="ds-spectrum__row"><div class="ds-spectrum__labels"><b>Experta</b><span>Intuitiva</span></div><div class="ds-spectrum__track"><span class="ds-spectrum__dot" style="--at:30%"></span></div></div>
-        <div class="ds-spectrum__row"><div class="ds-spectrum__labels"><span>Seria</span><b>Juguetona</b></div><div class="ds-spectrum__track"><span class="ds-spectrum__dot" style="--at:62%"></span></div></div>
-        <div class="ds-spectrum__row"><div class="ds-spectrum__labels"><span>Urbana</span><b>Marina</b></div><div class="ds-spectrum__track"><span class="ds-spectrum__dot" style="--at:80%"></span></div></div>
-        <div class="ds-spectrum__row"><div class="ds-spectrum__labels"><span>Lujo</span><b>Accesible</b></div><div class="ds-spectrum__track"><span class="ds-spectrum__dot" style="--at:64%"></span></div></div>
-      </div>
-    </div>
-    <div class="ds-pillars">
-      <div class="ds-pillar"><h3>Salud primero</h3><p>Hablamos de hidratación, porosidad y cuero cabelludo antes que de "looks". El resultado bonito es la consecuencia.</p></div>
-      <div class="ds-pillar"><h3>Cada patrón cuenta</h3><p>Del 2A al 4C. Ningún rizo es "difícil": cada uno tiene su técnica, y la marca lo nombra con precisión.</p></div>
-      <div class="ds-pillar"><h3>Ritmo, no prisa</h3><p>Recuperar un rizo lleva semanas. Mostramos procesos, no milagros; el movimiento de la marca es lento y constante.</p></div>
-      <div class="ds-pillar"><h3>Cercanía de orilla</h3><p>Tuteamos, explicamos y celebramos. Hablamos como alguien que ya pasó por el encrespado.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================================= Logo ================================== -->
-<section class="ds-section" id="logo">
-  <div class="mr-wrap">
-    <div class="ds-head">
-      <div><span class="mr-eyebrow">02 · Logo</span><h2>Una ola que se enrosca dentro del sol</h2></div>
-      <p>El isotipo es un círculo: arena rosada arriba, marea aqua abajo y dos crestas que se cierran en rizo. El rotulado a mano con mayúsculas y minúsculas mezcladas da la voz cercana.</p>
-    </div>
-
-    <div class="ds-logo-hero">
-      <div class="ds-logo-stage">
-        <span class="mr-badge ds-pending">Provisional · falta el archivo oficial</span>
-        <div class="ds-lockup">
-          <svg viewBox="0 0 100 100" role="img" aria-label="Isotipo Marea Rizada"><use href="#mr-mark"/></svg>
-          <div class="ds-wordmark" aria-label="Marea Rizada"><span>MaReA</span><span>RiZADA</span></div>
+  <!-- Héroe -->
+  <section class="lp-hero" id="inicio">
+    <div class="mr-wrap lp-hero__grid">
+      <div class="lp-hero__copy mr-rise">
+        <span class="mr-eyebrow">Expertos en salud capilar</span>
+        <h1>Recuperamos tus <em class="mr-ripple-text" id="hero-word">rizos</em></h1>
+        <p class="lp-hero__lead">Tu rizo no está roto: ha perdido su ritmo. Lo diagnosticamos, lo cortamos rizo a rizo y te enseñamos a cuidarlo en casa, sea cual sea tu patrón.</p>
+        <div class="lp-hero__ctas">
+          <a class="mr-btn" href="https://ig.me/m/marea.rizada" target="_blank" rel="noopener">Reservar diagnóstico</a>
+          <a class="mr-btn mr-btn--secondary" href="#patron">Descubre tu patrón</a>
+        </div>
+        <div class="lp-hero__note">
+          <span class="lp-dots" aria-hidden="true">
+            <span style="background:var(--mr-espuma);color:var(--mr-abismo)">2C</span>
+            <span style="background:var(--mr-concha);color:var(--mr-roca)">3B</span>
+            <span style="background:var(--mr-marea);color:var(--mr-espuma-50)">4A</span>
+          </span>
+          <span>Más de 8.400 personas siguen la marea en Instagram</span>
         </div>
       </div>
-      <div class="ds-logo-rules">
-        <div class="ds-rule">
-          <h4>Área de respeto</h4>
-          <p>Deja libre alrededor del logo el alto de una cresta de ola (¼ del diámetro del círculo).</p>
-          <div class="ds-clearspace"><i>¼ ⌀</i><i>¼ ⌀</i><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#mr-mark"/></svg></div>
+      <div class="lp-orb mr-rise" style="animation-delay:.15s">
+        <div class="lp-orb__disc" id="orb">
+          <canvas id="orb-tide" aria-hidden="true"></canvas>
+          <svg class="lp-orb__shine" viewBox="0 0 100 100" aria-hidden="true"><path d="M64 15c6 2 10 6 12 12"/><circle cx="79" cy="32" r="1.4"/></svg>
         </div>
-        <div class="ds-rule">
-          <h4>Tamaño mínimo</h4>
-          <p>Isotipo solo: 24 px / 8 mm. Logo horizontal: 96 px / 25 mm. Por debajo, los rizos se empastan.</p>
-        </div>
+        <span class="lp-orb__badge lp-orb__badge--a"><svg viewBox="0 0 26 20" aria-hidden="true"><path d="M2 12c4-6 7-6 9 0s5 6 9 0 3-4 4-2"/></svg>Patrón 3B · definido</span>
+        <span class="lp-orb__badge lp-orb__badge--b"><svg viewBox="0 0 26 20" aria-hidden="true"><path d="M3 4c-2 7 3 12 10 12s11-6 9-12"/></svg>Hidratación profunda</span>
       </div>
     </div>
 
-    <h3 class="ds-sub" style="margin-top:var(--sp-7)">Versiones sobre fondo</h3>
-    <div class="ds-variants">
-      <div class="ds-variant ds-variant--sal"><svg aria-hidden="true"><use href="#mr-mark"/></svg><small>Principal · sobre sal</small></div>
-      <div class="ds-variant ds-variant--abismo"><svg aria-hidden="true"><use href="#mr-mark"/></svg><small>Sobre abismo</small></div>
-      <div class="ds-variant ds-variant--espuma"><svg aria-hidden="true" style="--mark-water:#1C6F75;--mark-water2:#278E95"><use href="#mr-mark"/></svg><small>Sobre espuma · agua profunda</small></div>
-      <div class="ds-variant ds-variant--concha"><svg aria-hidden="true" style="--mark-sand:#3D4643;--mark-water:#3D4643;--mark-water2:#3D4643;--mark-foam:#CDAA9C"><use href="#mr-mark"/></svg><small>Monocromo · sello</small></div>
+    <div class="lp-band" aria-label="Patrones de rizo del 2A al 4C">
+      <div class="lp-band__track" id="band"></div>
     </div>
+  </section>
 
-    <h3 class="ds-sub" style="margin-top:var(--sp-7)">Familia de marca</h3>
-    <div class="ds-family">
-      <div class="ds-family__item"><svg aria-hidden="true"><use href="#mr-mark"/></svg><div><b>Marea Rizada</b><span>Salón · salud capilar</span></div></div>
-      <div class="ds-family__item"><svg aria-hidden="true" style="--mark-sand:#9EE5E7;--mark-water:#CDAA9C;--mark-water2:#E6CCC1"><use href="#mr-mark"/></svg><div><b>Marea Rizada Shop</b><span>@marearizada_shop · marea invertida</span></div></div>
-      <div class="ds-family__item"><svg aria-hidden="true" style="--mark-sand:#F3E3DC;--mark-water:#9A5B49;--mark-water2:#B88A79"><use href="#mr-mark"/></svg><div><b>Marea Rizada Nails</b><span>@marea.rizada_nails · concha tostada</span></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================================= Color ================================= -->
-<section class="ds-section ds-section--tint" id="color">
-  <div class="mr-wrap">
-    <div class="ds-head">
-      <div><span class="mr-eyebrow">03 · Color</span><h2>La paleta de la orilla</h2></div>
-      <p>Tres colores salen del logo: la espuma, la concha y la roca del rotulado. El resto los hace legibles. El fondo es sal marina, frío y limpio, para que el aqua brille.</p>
-    </div>
-
-    <div class="ds-swatches" id="swatches">
-      <article class="ds-swatch ds-swatch--wide" data-hex="#9EE5E7">
-        <div class="ds-swatch__chip ds-swatch__chip--hero" style="background:#9EE5E7"><span class="ds-aa"></span></div>
-        <div class="ds-swatch__body"><b>Espuma</b><p>El color héroe. Fondos de marca, agua, superficies destacadas. Nunca para texto sobre sal.</p><div class="ds-swatch__meta"><span>#9EE5E7</span><span>--mr-espuma</span></div></div>
-      </article>
-      <article class="ds-swatch" data-hex="#1C6F75">
-        <div class="ds-swatch__chip" style="background:#1C6F75"><span class="ds-aa"></span></div>
-        <div class="ds-swatch__body"><b>Marea</b><p>Botones, enlaces, acentos de texto.</p><div class="ds-swatch__meta"><span>#1C6F75</span><span>--mr-marea</span></div></div>
-      </article>
-      <article class="ds-swatch" data-hex="#CDAA9C">
-        <div class="ds-swatch__chip" style="background:#CDAA9C"><span class="ds-aa"></span></div>
-        <div class="ds-swatch__body"><b>Concha</b><p>El sol del logo. Calidez, fondos de testimonio.</p><div class="ds-swatch__meta"><span>#CDAA9C</span><span>--mr-concha</span></div></div>
-      </article>
-      <article class="ds-swatch" data-hex="#3D4643">
-        <div class="ds-swatch__chip" style="background:#3D4643"><span class="ds-aa"></span></div>
-        <div class="ds-swatch__body"><b>Roca</b><p>Texto de cuerpo. El gris del rotulado.</p><div class="ds-swatch__meta"><span>#3D4643</span><span>--mr-roca</span></div></div>
-      </article>
-      <article class="ds-swatch" data-hex="#0F3236">
-        <div class="ds-swatch__chip" style="background:#0F3236"><span class="ds-aa"></span></div>
-        <div class="ds-swatch__body"><b>Abismo</b><p>Fondo oscuro, portadas, modo noche.</p><div class="ds-swatch__meta"><span>#0F3236</span><span>--mr-abismo</span></div></div>
-      </article>
-      <article class="ds-swatch" data-hex="#9A5B49">
-        <div class="ds-swatch__chip" style="background:#9A5B49"><span class="ds-aa"></span></div>
-        <div class="ds-swatch__body"><b>Arcilla</b><p>Concha tostada para texto cálido y etiquetas.</p><div class="ds-swatch__meta"><span>#9A5B49</span><span>--mr-arcilla</span></div></div>
-      </article>
-      <article class="ds-swatch" data-hex="#F2F8F7">
-        <div class="ds-swatch__chip" style="background:#F2F8F7;border-bottom:1px solid var(--line)"><span class="ds-aa"></span></div>
-        <div class="ds-swatch__body"><b>Sal</b><p>Fondo principal en claro.</p><div class="ds-swatch__meta"><span>#F2F8F7</span><span>--mr-sal</span></div></div>
-      </article>
-    </div>
-
-    <div class="ds-block">
-      <h3 class="ds-sub">Escalas tonales</h3>
-      <div class="ds-ramp" aria-label="Escala espuma 50 a 900">
-        <div style="background:#EFFBFB;color:#0F3236">50</div><div style="background:#D8F5F6;color:#0F3236">100</div><div style="background:#BDEEEF;color:#0F3236">200</div><div style="background:#9EE5E7;color:#0F3236">300</div><div style="background:#6FCFD3;color:#0F3236">400</div><div style="background:#3FB0B6;color:#0F3236">500</div><div style="background:#278E95;color:#EFFBFB">600</div><div style="background:#1C6F75;color:#EFFBFB">700</div><div style="background:#155257;color:#EFFBFB">800</div><div style="background:#0F3236;color:#EFFBFB">900</div>
+  <!-- Descubre tu patrón -->
+  <section class="lp-section" id="patron">
+    <div class="mr-wrap">
+      <div class="lp-head">
+        <span class="mr-eyebrow">Descubre tu patrón</span>
+        <h2>Cada rizo tiene su marea</h2>
+        <p>Elige la forma que más se parece a tu pelo recién lavado y sin peinar. Te contamos qué necesita. En el diagnóstico lo confirmamos mechón a mechón: es habitual tener dos o tres patrones en la misma cabeza.</p>
       </div>
-      <div class="ds-ramp ds-ramp--concha" aria-label="Escala concha 50 a 600">
-        <div style="background:#FBF4F1;color:#3D4643">50</div><div style="background:#F3E3DC;color:#3D4643">100</div><div style="background:#E6CCC1;color:#3D4643">200</div><div style="background:#CDAA9C;color:#3D4643">300</div><div style="background:#B88A79;color:#1F2725">400</div><div style="background:#9A5B49;color:#FBF4F1">500</div><div style="background:#7A4436;color:#FBF4F1">600</div>
-      </div>
-    </div>
-
-    <div class="ds-block">
-      <h3 class="ds-sub">Proporción en una pieza</h3>
-      <div class="ds-ratio" role="img" aria-label="Sal 55 por ciento, espuma 22, roca 12, concha 8, marea 3">
-        <div style="flex:55;background:#F2F8F7;color:#3D4643">Sal 55%</div>
-        <div style="flex:22;background:#9EE5E7;color:#0F3236">Espuma 22%</div>
-        <div style="flex:12;background:#3D4643;color:#F2F8F7">Roca 12%</div>
-        <div style="flex:8;background:#CDAA9C;color:#3D4643">8%</div>
-        <div style="flex:3;background:#1C6F75"></div>
-      </div>
-      <p class="ds-note" style="margin-top:var(--sp-3)">La marea (aqua profundo) es el 3 %: solo para la acción principal. Si todo es acento, nada lo es.</p>
-    </div>
-  </div>
-</section>
-
-<!-- =============================== Tipografía =============================== -->
-<section class="ds-section" id="tipografia">
-  <div class="mr-wrap">
-    <div class="ds-head">
-      <div><span class="mr-eyebrow">04 · Tipografía</span><h2>Letras con rebote, como un rizo bien definido</h2></div>
-      <p>Shantell Sans es una letra variable con ejes de <b>rebote</b> e <b>informalidad</b>: la misma familia va de rótulo pulido a escritura de pizarra. Es el eco del logo dibujado a mano. Figtree acompaña con claridad; Martian Mono anota datos técnicos.</p>
-    </div>
-
-    <div class="ds-type-grid">
-      <div class="ds-specimen">
-        <div class="ds-specimen__top"><span class="ds-specimen__name">Display · Shantell Sans</span><span class="mr-badge mr-badge--aqua">Variable · 4 ejes</span></div>
-        <div class="ds-specimen__big" id="type-specimen" contenteditable="true" spellcheck="false" aria-label="Texto de muestra editable">Recuperamos tus rizos</div>
-        <div class="ds-axes">
-          <div class="mr-field"><label for="ax-bnce">Rebote <output id="ax-bnce-out">40</output></label><input class="mr-range" id="ax-bnce" type="range" min="-100" max="100" value="40"></div>
-          <div class="mr-field"><label for="ax-infm">Informalidad <output id="ax-infm-out">30</output></label><input class="mr-range" id="ax-infm" type="range" min="0" max="100" value="30"></div>
-          <div class="mr-field"><label for="ax-wght">Peso <output id="ax-wght-out">700</output></label><input class="mr-range" id="ax-wght" type="range" min="300" max="800" value="700"></div>
-        </div>
-        <p class="ds-note"><b>Regla:</b> titulares con rebote 30–60 e informalidad 30–60. Rebote 100 solo en piezas de redes. En textos legales y precios, rebote 0.</p>
-      </div>
-      <div class="ds-stack">
-        <div class="ds-specimen ds-body-spec">
-          <div class="ds-specimen__top"><span class="ds-specimen__name">Texto · Figtree</span></div>
-          <p>El rizo 3B necesita hidratación profunda y poca manipulación. Desenreda siempre con acondicionador y con los dedos, de puntas a raíz.</p>
-          <div class="ds-glyphs">Aa Bb Rr Zz ñ á ¿? 0123</div>
-        </div>
-        <div class="ds-specimen">
-          <div class="ds-specimen__top"><span class="ds-specimen__name">Datos · Martian Mono</span></div>
-          <div class="ds-mono-spec">PATRÓN 3B · POROSIDAD ALTA<br>HIDRATACIÓN 72% · 90 MIN<br>CITA 14.10 · 11:30</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ds-scale" aria-label="Escala tipográfica">
-      <div class="ds-scale__row"><code>--fs-5xl</code><code>119 px</code><span style="font-family:var(--font-display);font-size:var(--fs-4xl);font-weight:700;line-height:1">Pleamar</span></div>
-      <div class="ds-scale__row"><code>--fs-3xl</code><code>49 px</code><span style="font-family:var(--font-display);font-size:var(--fs-3xl);font-weight:650;line-height:1.1">Título de sección</span></div>
-      <div class="ds-scale__row"><code>--fs-xl</code><code>31 px</code><span style="font-family:var(--font-display);font-size:var(--fs-xl);font-weight:650">Título de tarjeta</span></div>
-      <div class="ds-scale__row"><code>--fs-md</code><code>20 px</code><span style="font-size:var(--fs-md)">Entradilla y destacados de texto</span></div>
-      <div class="ds-scale__row"><code>--fs-base</code><code>16 px</code><span>Texto corrido, interlineado 1,6</span></div>
-      <div class="ds-scale__row"><code>--fs-xs</code><code>13 px</code><span style="font-family:var(--font-mono);font-size:var(--fs-xs);letter-spacing:.12em;text-transform:uppercase">Etiqueta · dato técnico</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================= Escala de rizos ============================= -->
-<section class="ds-section ds-section--tint" id="rizos">
-  <div class="mr-wrap">
-    <div class="ds-head">
-      <div><span class="mr-eyebrow">05 · Iconografía de patrón</span><h2>La escala de rizos, dibujada como olas</h2></div>
-      <p>Los nueve patrones del método de tipado (2A a 4C) se dibujan con la misma curva: cuanto más cerrado el rizo, más se enrosca la ola. Úsalos en fichas de diagnóstico, filtros del shop y portadas de destacadas. Toca uno para redibujarlo.</p>
-    </div>
-    <div class="ds-curls" id="curls"></div>
-    <div class="ds-formula">
-      <span>Cada icono es una trocoide:</span>
-      <code>x = t − d·sin t</code><code>y = d·cos t</code>
-      <span>d &lt; 1 onda · d ≈ 1 cúspide · d &gt; 1 bucle</span>
-    </div>
-  </div>
-</section>
-
-<!-- =============================== Movimiento =============================== -->
-<section class="ds-section" id="movimiento">
-  <div class="mr-wrap">
-    <div class="ds-head">
-      <div><span class="mr-eyebrow">06 · Movimiento</span><h2>Todo se mueve como el agua</h2></div>
-      <p>Nada aparece de golpe ni rebota como goma. Las entradas suben como la marea, los botones se llenan de agua y los bucles ambientales tardan nueve segundos, el ritmo de una respiración tranquila frente al mar.</p>
-    </div>
-
-    <div class="ds-motion">
-      <div class="ds-demo ds-demo--wide">
-        <h4>Curvas de easing</h4>
-        <div class="ds-demo__stage">
-          <div class="ds-eases">
-            <div class="ds-ease"><code>oleaje</code><div class="ds-ease__lane"><span class="mr-ease-dot" style="animation-timing-function:var(--ease-oleaje)"></span></div></div>
-            <div class="ds-ease"><code>resaca</code><div class="ds-ease__lane"><span class="mr-ease-dot" style="animation-timing-function:var(--ease-resaca)"></span></div></div>
-            <div class="ds-ease"><code>calma</code><div class="ds-ease__lane"><span class="mr-ease-dot" style="animation-timing-function:var(--ease-calma)"></span></div></div>
+      <div class="lp-finder">
+        <div class="lp-finder__grid" id="finder" role="group" aria-label="Elige tu patrón"></div>
+        <article class="lp-result" id="result" aria-live="polite">
+          <div class="lp-result__main">
+            <div>
+              <div class="lp-result__code" id="r-code">3B</div>
+              <h3 class="lp-result__name" id="r-name">Rizo definido</h3>
+            </div>
+            <p id="r-text">Rizos del grosor de un rotulador, con mucho volumen. Pierden forma cuando les falta agua: necesitan hidratación profunda, sellado con crema o aceite ligero y poca manipulación.</p>
+            <div class="lp-needs">
+              <div class="lp-need"><span>Hidratación</span><span class="lp-need__bar" id="n-hid"></span></div>
+              <div class="lp-need"><span>Definición</span><span class="lp-need__bar" id="n-def"></span></div>
+              <div class="lp-need"><span>Cuidado nocturno</span><span class="lp-need__bar" id="n-noc"></span></div>
+            </div>
           </div>
-        </div>
-        <p><b>Oleaje</b> para casi todo. <b>Resaca</b> retrocede antes de avanzar: solo en confirmaciones. <b>Calma</b> es senoidal, para bucles.</p>
-      </div>
-      <div class="ds-demo">
-        <h4>Marea de carga</h4>
-        <div class="ds-demo__stage"><div class="mr-tide-loader" id="loader" style="--level:55%"><span id="loader-out">55%</span></div></div>
-        <div class="mr-field"><label for="loader-range">Nivel de marea</label><input class="mr-range" id="loader-range" type="range" min="5" max="95" value="55"></div>
-      </div>
-      <div class="ds-demo">
-        <h4>Botón que se llena</h4>
-        <div class="ds-demo__stage"><button class="mr-btn" type="button">Pasa por encima</button></div>
-        <p>La espuma sube desde abajo con cresta animada. 420 ms, oleaje.</p>
-      </div>
-      <div class="ds-demo">
-        <h4>Texto que riza</h4>
-        <div class="ds-demo__stage"><span class="ds-ripple-demo mr-ripple-text" id="ripple-demo">rizos</span></div>
-        <p>El eje de rebote ondula letra a letra. Solo en una palabra por pantalla.</p>
-      </div>
-      <div class="ds-demo">
-        <h4>Espuma</h4>
-        <div class="ds-demo__stage mr-bubbles" id="bubble-demo" style="background:var(--water-3)"></div>
-        <p>Burbujas lentas para fondos de agua. Máximo 12 por bloque.</p>
+          <div class="mr-tide-loader" id="r-tide" style="--level:70%"><span id="r-tide-out">sed</span></div>
+          <svg class="lp-result__curve" viewBox="0 0 600 70" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path id="r-curve" d=""/></svg>
+          <a class="mr-btn" href="https://ig.me/m/marea.rizada" target="_blank" rel="noopener" style="justify-self:start">Confirmar mi patrón en un diagnóstico</a>
+        </article>
       </div>
     </div>
+  </section>
 
-    <div class="ds-table-wrap">
-      <table class="ds-tokens-table">
-        <thead><tr><th>Token</th><th>Valor</th><th>Cuándo</th></tr></thead>
-        <tbody>
-          <tr><td><code>--dur-gota</code></td><td><code>120ms</code></td><td>Pulsación, cambio de estado de un control</td></tr>
-          <tr><td><code>--dur-ola</code></td><td><code>420ms</code></td><td>Hover, abrir un menú, llenar un botón</td></tr>
-          <tr><td><code>--dur-marea</code></td><td><code>1200ms</code></td><td>Entrada de sección, dibujo de un rizo</td></tr>
-          <tr><td><code>--dur-pleamar</code></td><td><code>9s</code></td><td>Olas y burbujas ambientales en bucle</td></tr>
-          <tr><td><code>--ease-oleaje</code></td><td><code>cubic-bezier(.45,.05,.25,1)</code></td><td>Por defecto</td></tr>
-          <tr><td><code>--ease-resaca</code></td><td><code>cubic-bezier(.6,-.25,.3,1.35)</code></td><td>Confirmaciones, "reserva lista"</td></tr>
-          <tr><td><code>--ease-calma</code></td><td><code>cubic-bezier(.37,0,.63,1)</code></td><td>Bucles senoidales</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="ds-note" style="margin-top:var(--sp-4)">Con <b>reducir movimiento</b> activado, las olas quedan quietas en un fotograma y los bucles se detienen.</p>
-  </div>
-</section>
-
-<!-- =============================== Componentes =============================== -->
-<section class="ds-section ds-section--tint" id="componentes">
-  <div class="mr-wrap">
-    <div class="ds-head">
-      <div><span class="mr-eyebrow">07 · Componentes</span><h2>Piezas para la web y la reserva</h2></div>
-      <p>Bordes de guijarro, sombras de agua y una forma de concha asimétrica para lo que se toca. Los textos y duraciones son de ejemplo.</p>
-    </div>
-
-    <div class="ds-block">
-      <h3 class="ds-sub">Botones</h3>
-      <div class="ds-row">
-        <button class="mr-btn" type="button">Reservar diagnóstico</button>
-        <button class="mr-btn mr-btn--secondary" type="button">Ver servicios</button>
-        <button class="mr-btn mr-btn--warm" type="button">Ir al shop</button>
-        <button class="mr-btn mr-btn--ghost" type="button">Saber más
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12c3-3 5-3 8 0s5 3 8 0M15 8l5 4-5 4"/></svg></button>
-        <button class="mr-btn mr-btn--sm" type="button">Pequeño</button>
+  <!-- Servicios -->
+  <section class="lp-section lp-section--tint" id="servicios">
+    <div class="mr-wrap">
+      <div class="lp-head">
+        <span class="mr-eyebrow">Servicios</span>
+        <h2>Salud primero, definición después</h2>
+        <p>Trabajamos el rizo desde dentro: cuero cabelludo, hidratación y forma. El resultado bonito es la consecuencia.</p>
       </div>
-    </div>
-
-    <div class="ds-block">
-      <h3 class="ds-sub">Chips de patrón y etiquetas</h3>
-      <div class="ds-row" id="chip-row">
-        <button class="mr-chip" type="button" aria-pressed="false"><span class="mr-chip__code">2C</span>Ondas</button>
-        <button class="mr-chip" type="button" aria-pressed="true"><span class="mr-chip__code">3B</span>Rizo definido</button>
-        <button class="mr-chip" type="button" aria-pressed="false"><span class="mr-chip__code">4A</span>Muelle</button>
-        <button class="mr-chip" type="button" aria-pressed="false"><span class="mr-chip__code">Po</span>Porosidad alta</button>
-        <span class="mr-badge">Novedad</span>
-        <span class="mr-badge mr-badge--aqua">Agenda abierta</span>
-      </div>
-    </div>
-
-    <div class="ds-block">
-      <h3 class="ds-sub">Tarjetas de servicio</h3>
-      <div class="ds-services">
+      <div class="lp-services">
         <article class="mr-card">
           <div class="mr-card__icon"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="15" cy="15" r="9"/><path d="M22 22l8 8M10 16c2-3 4-3 5 0s3 3 5 0"/></svg></div>
           <h3>Diagnóstico capilar</h3>
-          <p>Identificamos tu patrón, porosidad y estado del cuero cabelludo. El punto de partida.</p>
-          <div class="mr-card__meta"><span class="mr-mono">60 MIN</span><button class="mr-btn mr-btn--ghost mr-btn--sm" type="button">Reservar</button></div>
+          <p>El punto de partida. Analizamos tu historia con el pelo y cómo está hoy.</p>
+          <ul><li>Patrón y porosidad</li><li>Estado del cuero cabelludo</li><li>Plan por etapas</li></ul>
         </article>
         <article class="mr-card">
           <div class="mr-card__icon"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="26" r="4"/><circle cx="21" cy="28" r="4"/><path d="M12 23L26 6M18 25L11 8"/><path d="M26 18c2-2 4-2 5 0"/></svg></div>
           <h3>Corte rizo a rizo</h3>
-          <p>Corte en seco que respeta la caída natural de cada mechón.</p>
-          <div class="mr-card__meta"><span class="mr-mono">90 MIN</span><button class="mr-btn mr-btn--ghost mr-btn--sm" type="button">Reservar</button></div>
+          <p>Corte en seco, mechón a mechón, respetando cómo cae cada rizo.</p>
+          <ul><li>Forma y volumen equilibrados</li><li>Saneado de puntas dañadas</li><li>Ideal en transición</li></ul>
         </article>
         <article class="mr-card">
           <div class="mr-card__icon"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 4C12 12 9 17 9 22a9 9 0 0 0 18 0c0-5-3-10-9-18z"/><path d="M12 23c2-2 4-2 6 0s4 2 6 0"/></svg></div>
-          <h3>Hidratación profunda</h3>
-          <p>Tratamiento según tu porosidad para devolver elasticidad y brillo.</p>
-          <div class="mr-card__meta"><span class="mr-mono">75 MIN</span><button class="mr-btn mr-btn--ghost mr-btn--sm" type="button">Reservar</button></div>
+          <h3>Tratamientos de recuperación</h3>
+          <p>Hidratación, nutrición o proteína según lo que pida tu fibra.</p>
+          <ul><li>Adaptados a tu porosidad</li><li>Elasticidad y brillo</li><li>Menos frizz, más forma</li></ul>
         </article>
         <article class="mr-card mr-card--feature">
           <div class="mr-card__icon"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h24v15H16l-6 6v-6H6z"/><path d="M18 11a3.5 3.5 0 1 0 3.5 3.5"/></svg></div>
-          <span class="mr-badge">Destacado</span>
+          <span class="mr-badge">Para casa</span>
           <h3>Asesoría curly</h3>
-          <p>Tu rutina en casa, paso a paso, con los productos que tu rizo necesita.</p>
-          <div class="mr-card__meta" style="width:100%"><span class="mr-mono">45 MIN</span><button class="mr-btn mr-btn--sm" type="button">Reservar</button></div>
+          <p>Tu rutina paso a paso: lavado, definición y secado, con productos que sí funcionan para ti.</p>
         </article>
       </div>
     </div>
+  </section>
 
-    <div class="ds-block ds-comp-grid">
-      <form class="ds-form" id="booking" novalidate>
-        <div class="ds-form__head"><h3>Reserva tu diagnóstico</h3><span class="mr-badge mr-badge--aqua">Ejemplo rellenado</span></div>
-        <div class="mr-field"><label for="f-name">Nombre</label><input class="mr-input" id="f-name" name="name" value="Lucía" autocomplete="given-name"></div>
-        <div class="mr-field"><label for="f-ig">Instagram o teléfono</label><input class="mr-input" id="f-ig" name="contact" value="@lucia.rizos"></div>
-        <div class="mr-field"><label for="f-type">Tu patrón (si lo sabes)</label>
-          <select class="mr-select" id="f-type" name="type"><option>No lo sé</option><option>2A</option><option>2B</option><option>2C</option><option>3A</option><option selected>3B</option><option>3C</option><option>4A</option><option>4B</option><option>4C</option></select></div>
-        <div class="mr-field"><label for="f-service">Servicio</label>
-          <select class="mr-select" id="f-service" name="service"><option selected>Diagnóstico capilar</option><option>Corte rizo a rizo</option><option>Hidratación profunda</option><option>Asesoría curly</option></select></div>
-        <div class="mr-field full"><label for="f-msg">¿Qué le pasa a tu rizo?</label><textarea class="mr-textarea" id="f-msg" name="msg">Lo noto seco y sin definición desde que dejé de alisarlo.</textarea><span class="mr-hint">Cuanto más nos cuentes, mejor llegamos preparadas.</span></div>
-        <div class="mr-field full"><label for="f-hyd">¿Cómo de hidratado lo sientes? <output id="f-hyd-out" class="mr-mono">30%</output></label><input class="mr-range" id="f-hyd" type="range" min="0" max="100" value="30"></div>
-        <div class="full ds-row" style="justify-content:space-between">
-          <button class="mr-btn" type="submit">Solicitar cita</button>
-          <div class="ds-toast-slot" id="toast-slot" aria-live="polite"></div>
-        </div>
-      </form>
+  <!-- Método -->
+  <section class="lp-section" id="metodo">
+    <div class="mr-wrap">
+      <div class="lp-head">
+        <span class="mr-eyebrow">El método</span>
+        <h2>La marea sube poco a poco</h2>
+        <p>Recuperar un rizo lleva semanas, no una tarde. Por eso trabajamos por etapas y te acompañamos entre citas.</p>
+      </div>
+      <ol class="lp-steps" style="list-style:none;margin:0;padding:0">
+        <li class="lp-step"><div class="mr-tide-loader" style="--level:22%"></div><span class="lp-step__n">Paso 1</span><h3>Diagnóstico</h3><p>Leemos tu pelo: patrón, porosidad, daño químico o térmico y hábitos.</p></li>
+        <li class="lp-step"><div class="mr-tide-loader" style="--level:46%"></div><span class="lp-step__n">Paso 2</span><h3>Limpieza y corte</h3><p>Liberamos el rizo de residuos y cortamos lo que ya no puede volver.</p></li>
+        <li class="lp-step"><div class="mr-tide-loader" style="--level:70%"></div><span class="lp-step__n">Paso 3</span><h3>Hidratación y rutina</h3><p>Tratamiento en salón y una rutina clara para casa.</p></li>
+        <li class="lp-step"><div class="mr-tide-loader" style="--level:92%"></div><span class="lp-step__n">Paso 4</span><h3>Seguimiento</h3><p>Revisamos cómo responde tu rizo y ajustamos productos y técnica.</p></li>
+      </ol>
+    </div>
+  </section>
 
-      <div class="ds-stack">
-        <div class="ds-ba" id="ba" aria-label="Comparador antes y después">
-          <canvas id="ba-before" aria-hidden="true"></canvas>
-          <div class="ds-ba__after"><canvas id="ba-after" aria-hidden="true"></canvas></div>
-          <span class="ds-ba__line"></span>
-          <span class="mr-badge ds-ba__tag ds-ba__tag--l">Antes · encrespado</span>
-          <span class="mr-badge mr-badge--aqua ds-ba__tag ds-ba__tag--r">Después · 3B definido</span>
-          <input type="range" id="ba-range" min="0" max="100" value="50" aria-label="Mover comparador">
-          <span class="ds-ba__knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
-        </div>
-        <figure class="mr-quote" style="margin:0">
-          <blockquote>"Después de tres años alisándome, en dos meses volvieron mis rizos. Y ahora sé cuidarlos."</blockquote>
-          <figcaption><span class="mr-avatar">C</span><span>Clienta, patrón 3B · testimonio de ejemplo</span></figcaption>
-        </figure>
+  <!-- Resultados -->
+  <section class="lp-section lp-section--sand" id="resultados">
+    <div class="mr-wrap lp-results">
+      <div class="mr-ba" id="ba" aria-label="Ilustración antes y después">
+        <canvas id="ba-before" aria-hidden="true"></canvas>
+        <div class="mr-ba__after"><canvas id="ba-after" aria-hidden="true"></canvas></div>
+        <span class="mr-ba__line"></span>
+        <span class="mr-badge mr-ba__tag mr-ba__tag--l">Antes · encrespado</span>
+        <span class="mr-badge mr-badge--aqua mr-ba__tag mr-ba__tag--r">Después · definido</span>
+        <input type="range" id="ba-range" min="0" max="100" value="50" aria-label="Mover comparador">
+        <span class="mr-ba__knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+      </div>
+      <div class="lp-results__copy">
+        <span class="mr-eyebrow">Transición</span>
+        <h2>Del encrespado a la definición</h2>
+        <p>El frizz casi siempre es sed. Cuando el rizo recupera agua y deja de recibir calor y químicos, vuelve a agruparse y a marcar su forma.</p>
+        <ul class="lp-checks">
+          <li><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17c3-3 6-3 9 0s6 3 9 0M9 10l3 3 7-7"/></svg>Rizos que se agrupan en vez de abrirse</li>
+          <li><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17c3-3 6-3 9 0s6 3 9 0M9 10l3 3 7-7"/></svg>Elasticidad: se estira y vuelve</li>
+          <li><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17c3-3 6-3 9 0s6 3 9 0M9 10l3 3 7-7"/></svg>Una rutina que entiendes y puedes repetir</li>
+        </ul>
+        <a class="mr-btn mr-btn--secondary" href="https://instagram.com/marea.rizada" target="_blank" rel="noopener" style="justify-self:start">Ver resultados reales en Instagram</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ========================= Espaciado, formas, sombras ========================= -->
-<section class="ds-section" id="fundamentos">
-  <div class="mr-wrap">
-    <div class="ds-head">
-      <div><span class="mr-eyebrow">08 · Fundamentos</span><h2>Espacio, forma y profundidad</h2></div>
-      <p>Base de 4 px con nombres de agua: gota, burbuja, ola, marea, pleamar. Las formas imitan guijarros y conchas; las sombras son difusas y tintadas del azul del fondo marino.</p>
+  <!-- Manifiesto -->
+  <section class="lp-manifesto" aria-label="Manifiesto">
+    <div class="mr-wrap">
+      <span class="mr-eyebrow">Por qué Marea Rizada</span>
+      <p>Ningún rizo es difícil. Ninguno hay que <em>domarlo</em>. Cada uno tiene su ritmo, como la marea: sube, baja y siempre vuelve.</p>
     </div>
-    <div class="ds-foundations">
-      <div>
-        <h3 class="ds-sub">Espaciado</h3>
-        <div class="ds-space">
-          <div class="ds-space__row"><span>gota</span><span class="ds-space__bar" style="--w:4px"></span><span>4</span></div>
-          <div class="ds-space__row"><span>burbuja</span><span class="ds-space__bar" style="--w:8px"></span><span>8</span></div>
-          <div class="ds-space__row"><span>ola corta</span><span class="ds-space__bar" style="--w:16px"></span><span>16</span></div>
-          <div class="ds-space__row"><span>sp-5</span><span class="ds-space__bar" style="--w:24px"></span><span>24</span></div>
-          <div class="ds-space__row"><span>ola</span><span class="ds-space__bar" style="--w:32px"></span><span>32</span></div>
-          <div class="ds-space__row"><span>sp-7</span><span class="ds-space__bar" style="--w:48px"></span><span>48</span></div>
-          <div class="ds-space__row"><span>marea</span><span class="ds-space__bar" style="--w:64px"></span><span>64</span></div>
-          <div class="ds-space__row"><span>sp-9</span><span class="ds-space__bar" style="--w:96px"></span><span>96</span></div>
-          <div class="ds-space__row"><span>pleamar</span><span class="ds-space__bar" style="--w:128px"></span><span>128</span></div>
-        </div>
+    <div class="lp-manifesto__sea"><canvas id="sea-tide" aria-hidden="true"></canvas></div>
+  </section>
+
+  <!-- Familia -->
+  <section class="lp-section" id="familia">
+    <div class="mr-wrap">
+      <div class="lp-head">
+        <span class="mr-eyebrow">La familia Marea</span>
+        <h2>Salón, shop y nails</h2>
       </div>
-      <div>
-        <h3 class="ds-sub">Radios</h3>
-        <div class="ds-radii">
-          <div class="ds-radius" style="border-radius:var(--r-gota)">gota · 6</div>
-          <div class="ds-radius" style="border-radius:var(--r-guijarro)">guijarro · 14</div>
-          <div class="ds-radius" style="border-radius:var(--r-concha)">concha · 28/8</div>
-          <div class="ds-radius" style="border-radius:var(--r-ola);align-items:flex-end">ola · arco</div>
-        </div>
-      </div>
-      <div>
-        <h3 class="ds-sub">Sombras de agua</h3>
-        <div class="ds-shadows">
-          <div class="ds-shadow" style="box-shadow:var(--sh-1)">--sh-1 · reposo</div>
-          <div class="ds-shadow" style="box-shadow:var(--sh-2)">--sh-2 · hover, menús</div>
-          <div class="ds-shadow" style="box-shadow:var(--sh-3)">--sh-3 · modales</div>
-        </div>
-        <div class="mr-divider" style="margin-top:var(--sp-6)" role="separator"></div>
-        <p class="ds-note" style="margin-top:var(--sp-3)">Separador de ola: sustituye a las líneas rectas entre bloques.</p>
+      <div class="lp-family">
+        <a class="lp-fam lp-fam--salon" href="https://instagram.com/marea.rizada" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#mr-mark"/></svg>
+          <b>Marea Rizada</b>
+          <p>Salud capilar, diagnóstico, corte y tratamientos para rizos.</p>
+          <span>@marea.rizada →</span>
+        </a>
+        <a class="lp-fam lp-fam--shop" href="https://instagram.com/marearizada_shop" target="_blank" rel="noopener">
+          <svg aria-hidden="true" style="--mark-sand:#9EE5E7;--mark-water:#F3E3DC;--mark-water2:#E6CCC1;--mark-foam:#9A5B49"><use href="#mr-mark"/></svg>
+          <b>Marea Rizada Shop</b>
+          <p>Los productos que usamos en el salón, para tu rutina en casa.</p>
+          <span>@marearizada_shop →</span>
+        </a>
+        <a class="lp-fam lp-fam--nails" href="https://instagram.com/marea.rizada_nails" target="_blank" rel="noopener">
+          <svg aria-hidden="true" style="--mark-sand:#F3E3DC;--mark-water:#CDAA9C;--mark-water2:#E6CCC1"><use href="#mr-mark"/></svg>
+          <b>Marea Rizada Nails</b>
+          <p>Manicura con el mismo cuidado y la misma calma.</p>
+          <span>@marea.rizada_nails →</span>
+        </a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- =============================== Instagram =============================== -->
-<section class="ds-section ds-section--tint" id="aplicaciones">
-  <div class="mr-wrap">
-    <div class="ds-head">
-      <div><span class="mr-eyebrow">09 · Aplicaciones</span><h2>Plantillas para el feed</h2></div>
-      <p>Tres familias de post que rotan en el perfil para que la cuadrícula se lea como una marea: espuma para consejos, abismo para resultados, concha para contenido educativo.</p>
-    </div>
-    <div class="ds-ig">
-      <div class="ds-post ds-post--tip">
-        <span class="ds-post__tag">Tip de marea · 07</span>
-        <div>
-          <p class="ds-post__title">Nunca cepilles el rizo en seco</p>
-          <p class="ds-post__body" style="margin-top:3cqw">Desenreda en la ducha, con acondicionador y los dedos.</p>
-        </div>
-        <div class="ds-post__waves" aria-hidden="true"><i></i><i></i></div>
-        <div class="ds-post__foot"><span>@marea.rizada</span><svg aria-hidden="true"><use href="#mr-mark"/></svg></div>
+  <!-- Preguntas -->
+  <section class="lp-section lp-section--tint" id="preguntas">
+    <div class="mr-wrap">
+      <div class="lp-head lp-head--center">
+        <span class="mr-eyebrow">Preguntas frecuentes</span>
+        <h2>Antes de tu primera cita</h2>
       </div>
-      <div class="ds-post ds-post--cover">
-        <span class="ds-post__tag">Antes / después</span>
-        <p class="ds-post__title">Del alisado al <span>3B</span> en 8 semanas</p>
-        <div class="ds-post__waves" aria-hidden="true"><i></i><i></i></div>
-        <div class="ds-post__foot"><span>Desliza →</span><svg aria-hidden="true"><use href="#mr-mark"/></svg></div>
-      </div>
-      <div class="ds-post ds-post--carrusel">
-        <span class="ds-post__tag">Aprende · 1/5</span>
-        <div>
-          <p class="ds-post__title">3 señales de que tu rizo pide proteína</p>
-          <ol style="margin-top:3cqw"><li>Se estira y no vuelve</li><li>Se siente blando o gomoso</li><li>Pierde forma en horas</li></ol>
-        </div>
-        <div class="ds-post__foot"><span>@marea.rizada</span><svg aria-hidden="true"><use href="#mr-mark"/></svg></div>
-      </div>
-      <div class="ds-post ds-post--story ds-story">
-        <span class="ds-post__tag">Historia</span>
-        <p class="ds-post__title">Agenda de diagnóstico abierta</p>
-        <p class="ds-post__body">Plazas limitadas este mes.</p>
-        <span class="ds-post__cta">Reservar</span>
+      <div class="lp-faq">
+        <details open>
+          <summary>No sé cuál es mi patrón. ¿Pasa algo?</summary>
+          <p>Nada. Para eso está el diagnóstico. Además, casi nadie tiene un solo patrón: la nuca, la coronilla y los laterales suelen rizar distinto.</p>
+        </details>
+        <details>
+          <summary>Llevo años alisándome. ¿Puedo recuperar el rizo?</summary>
+          <p>En la mayoría de los casos, sí. El pelo nuevo crece con su forma natural; lo que hacemos es cuidar la transición y cortar el largo dañado al ritmo que tú quieras.</p>
+        </details>
+        <details>
+          <summary>¿Cuánto tarda en notarse el cambio?</summary>
+          <p>Depende del daño y de la constancia. Muchas personas notan más definición e hidratación en las primeras semanas; la recuperación completa lleva más tiempo, porque va al ritmo del crecimiento.</p>
+        </details>
+        <details>
+          <summary>¿Cómo reservo?</summary>
+          <p>Escríbenos por mensaje directo a @marea.rizada en Instagram y te contamos la disponibilidad.</p>
+        </details>
       </div>
     </div>
+  </section>
 
-    <div class="ds-highlights" aria-label="Portadas de historias destacadas">
-      <div class="ds-hl"><div class="ds-hl__ring"><div style="background:#9EE5E7;color:#0F3236"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 8A8 8 0 0 0 10 16A7 7 0 0 0 17 23A5.5 5.5 0 0 0 22.5 17.5A3.8 3.8 0 0 0 18.7 13.7"/><path d="M6 28c4-3 8-3 12 0s8 3 12 0"/></svg></div></div>Rizos</div>
-      <div class="ds-hl"><div class="ds-hl__ring"><div style="background:#0F3236;color:#9EE5E7"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="11"/><path d="M18 7c3 4 3 7 0 11s-3 7 0 11"/></svg></div></div>Antes/después</div>
-      <div class="ds-hl"><div class="ds-hl__ring"><div style="background:#CDAA9C;color:#3D4643"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M8 13h20l-2 16H10z"/><path d="M13 13a5 5 0 0 1 10 0"/><path d="M12 21c2-2 4-2 6 0s4 2 6 0"/></svg></div></div>Shop</div>
-      <div class="ds-hl"><div class="ds-hl__ring"><div style="background:#F3E3DC;color:#9A5B49"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M12 30V14a6 6 0 0 1 12 0v16"/><path d="M15 14a3 3 0 0 1 6 0v4h-6z"/></svg></div></div>Nails</div>
-      <div class="ds-hl"><div class="ds-hl__ring"><div style="background:#1C6F75;color:#EFFBFB"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M18 6C13 13 10 17 10 21a8 8 0 0 0 16 0c0-4-3-8-8-15z"/></svg></div></div>Tips</div>
+  <!-- CTA final -->
+  <section class="lp-section" id="reservar">
+    <div class="mr-wrap lp-cta">
+      <svg class="lp-cta__mark" aria-hidden="true"><use href="#mr-mark"/></svg>
+      <h2>Tu rizo está esperando su marea</h2>
+      <p>Empieza por un diagnóstico. Sin prisas y sin promesas de milagro: con un plan.</p>
+      <a class="mr-btn" href="https://ig.me/m/marea.rizada" target="_blank" rel="noopener">Escribir por Instagram</a>
+      <span class="lp-handle">@marea.rizada</span>
     </div>
-  </div>
-</section>
-
-<!-- ================================= Voz ================================= -->
-<section class="ds-section" id="voz">
-  <div class="mr-wrap">
-    <div class="ds-head">
-      <div><span class="mr-eyebrow">10 · Voz y tono</span><h2>Hablamos como alguien que ya pasó por el frizz</h2></div>
-      <p>Tuteamos. Explicamos el porqué. Nombramos los patrones y los procesos con precisión, sin tecnicismos vacíos ni promesas de milagro.</p>
-    </div>
-    <div class="ds-voice">
-      <div class="ds-say ds-say--yes"><span class="ds-say__label">✓ Así</span><p>Tu rizo no está roto, está deshidratado. Vamos a devolverle su forma, paso a paso.</p><small>Empático, concreto, con un proceso.</small></div>
-      <div class="ds-say ds-say--no"><span class="ds-say__label">✕ Así no</span><p>¡¡Elimina el frizz YA con nuestro tratamiento milagroso!!</p><small>Grita, promete magia y trata el rizo como un problema.</small></div>
-      <div class="ds-say ds-say--yes"><span class="ds-say__label">✓ Así</span><p>Tienes un 3B con porosidad alta: necesita agua, sellado y paciencia.</p><small>Usa el vocabulario de la escala de rizos.</small></div>
-      <div class="ds-say ds-say--no"><span class="ds-say__label">✕ Así no</span><p>Domamos tu pelo rebelde para que por fin luzca bien.</p><small>"Domar" y "rebelde" van contra la marca: el rizo no se corrige, se cuida.</small></div>
-    </div>
-    <div class="ds-lexicon" aria-label="Vocabulario de marca">
-      <span class="mr-chip"><span class="mr-chip__code">sí</span>patrón</span>
-      <span class="mr-chip"><span class="mr-chip__code">sí</span>porosidad</span>
-      <span class="mr-chip"><span class="mr-chip__code">sí</span>definición</span>
-      <span class="mr-chip"><span class="mr-chip__code">sí</span>transición</span>
-      <span class="mr-chip"><span class="mr-chip__code">sí</span>recuperar</span>
-      <span class="mr-chip is-no"><span class="mr-chip__code">no</span>domar</span>
-      <span class="mr-chip is-no"><span class="mr-chip__code">no</span>pelo malo</span>
-      <span class="mr-chip is-no"><span class="mr-chip__code">no</span>milagro</span>
-    </div>
-  </div>
-</section>
-
-<!-- ================================ Tokens ================================ -->
-<section class="ds-section ds-section--tint" id="tokens">
-  <div class="mr-wrap">
-    <div class="ds-head">
-      <div><span class="mr-eyebrow">11 · Tokens y archivos</span><h2>Listo para construir</h2></div>
-      <p>El sistema vive en archivos sin dependencias. Enlaza los tres CSS y añade <code class="mr-mono">tide.js</code> si quieres las olas en canvas.</p>
-    </div>
-    <div class="ds-files">
-      <div class="ds-file"><code>design-system/tokens.css</code><p>Color, tipo, espacio, radios, sombras y movimiento. Claro y oscuro.</p></div>
-      <div class="ds-file"><code>design-system/components.css</code><p>Botones, chips, tarjetas, formularios, navegación, separadores.</p></div>
-      <div class="ds-file"><code>design-system/motion.css</code><p>Marea de carga, trazos, texto que riza, burbujas.</p></div>
-      <div class="ds-file"><code>design-system/tide.js</code><p>Olas rizadas en canvas y curvas de patrón 2A–4C.</p></div>
-      <div class="ds-file"><code>design-system/tokens.json</code><p>Los mismos tokens en formato W3C para Figma o Style Dictionary.</p></div>
-      <div class="ds-file"><code>assets/marea-mark.svg</code><p>Isotipo provisional en SVG.</p></div>
-    </div>
-    <div class="ds-code">
-      <button class="mr-btn mr-btn--sm mr-btn--warm" type="button" id="copy-btn">Copiar</button>
-<pre id="code-sample"><span class="tok-c">/* Marea Rizada · tokens esenciales */</span>
-:root {
-  --mr-espuma:  <span class="tok-v">#9EE5E7</span>;  <span class="tok-c">/* héroe */</span>
-  --mr-marea:   <span class="tok-v">#1C6F75</span>;  <span class="tok-c">/* acción */</span>
-  --mr-concha:  <span class="tok-v">#CDAA9C</span>;  <span class="tok-c">/* calidez */</span>
-  --mr-arcilla: <span class="tok-v">#9A5B49</span>;
-  --mr-roca:    <span class="tok-v">#3D4643</span>;  <span class="tok-c">/* texto */</span>
-  --mr-abismo:  <span class="tok-v">#0F3236</span>;
-  --mr-sal:     <span class="tok-v">#F2F8F7</span>;  <span class="tok-c">/* fondo */</span>
-
-  --font-display: <span class="tok-s">"Shantell Sans"</span>, ui-rounded, sans-serif;
-  --font-body:    <span class="tok-s">"Figtree"</span>, system-ui, sans-serif;
-  --font-mono:    <span class="tok-s">"Martian Mono"</span>, ui-monospace, monospace;
-
-  --r-guijarro: <span class="tok-v">14px</span>;
-  --r-concha:   <span class="tok-v">28px 28px 28px 8px</span>;
-
-  --dur-ola:      <span class="tok-v">420ms</span>;
-  --ease-oleaje:  <span class="tok-v">cubic-bezier(.45, .05, .25, 1)</span>;
-}
-
-<span class="tok-c">/* Olas en un canvas */</span>
-new MareaRizada.Tide(document.querySelector(<span class="tok-s">'canvas'</span>));</pre>
-    </div>
-  </div>
-</section>
+  </section>
 </main>
 
 <footer class="ds-footer">
   <div class="ds-footer__sea"><canvas id="footer-tide" aria-hidden="true"></canvas></div>
   <div class="ds-footer__body">
     <div class="mr-wrap">
-      <span>Marea Rizada · Sistema de diseño v1.0 · octubre 2026</span>
-      <span><a href="https://instagram.com/marea.rizada" target="_blank" rel="noopener">@marea.rizada</a> · <a href="https://instagram.com/marearizada_shop" target="_blank" rel="noopener">@marearizada_shop</a> · <a href="https://instagram.com/marea.rizada_nails" target="_blank" rel="noopener">@marea.rizada_nails</a></span>
+      <span>© 2026 Marea Rizada · Expertos en salud capilar</span>
+      <span class="lp-footer__links">
+        <a href="https://instagram.com/marea.rizada" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://instagram.com/marearizada_shop" target="_blank" rel="noopener">Shop</a>
+        <a href="https://instagram.com/marea.rizada_nails" target="_blank" rel="noopener">Nails</a>
+        <a href="design-system.html">Sistema de diseño</a>
+      </span>
     </div>
   </div>
 </footer>
 
 <script src="design-system/tide.js"></script>
-<script src="site/site.js"></script>
+<script src="site/landing.js"></script>
 </body>
 </html>

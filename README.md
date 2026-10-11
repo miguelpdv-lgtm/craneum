@@ -4,9 +4,12 @@ Sistema de diseño para **Marea Rizada** ([@marea.rizada](https://instagram.com/
 
 **Idea guía:** cada rizo es una ola. La paleta sale del logo (espuma aqua, arena rosada, gris roca del rotulado), la letra tiene rebote como un rizo definido y todo el movimiento imita el agua.
 
-## Ver la guía
+## Ver el sitio
 
-Abre `index.html` en el navegador. No hay que compilar nada.
+- `index.html`: landing page de Marea Rizada (descubre tu patrón, servicios, método, familia de marca, preguntas).
+- `design-system.html`: guía navegable del sistema de diseño.
+
+Son HTML estáticos: ábrelos en el navegador o publícalos tal cual (GitHub Pages, Netlify…). No hay que compilar nada.
 
 ## Archivos
 
@@ -18,7 +21,8 @@ Abre `index.html` en el navegador. No hay que compilar nada.
 | `design-system/tide.js` | Olas rizadas en canvas (`MareaRizada.Tide`) y curvas de patrón 2A–4C (`MareaRizada.curlPath`) |
 | `design-system/tokens.json` | Tokens en formato W3C para Figma Tokens o Style Dictionary |
 | `assets/marea-mark.svg` | Isotipo **provisional**, reconstruido desde la foto de perfil de Instagram |
-| `index.html`, `site/` | La guía navegable del sistema |
+| `index.html`, `site/landing.*` | Landing page |
+| `design-system.html`, `site/site.*` | Guía navegable del sistema |
 
 ## Uso rápido
 
@@ -38,4 +42,6 @@ Abre `index.html` en el navegador. No hay que compilar nada.
 
 ## Pendiente
 
+- Las reservas se dirigen al mensaje directo de Instagram (`ig.me/m/marea.rizada`). Si hay sistema de citas, cambiar esos enlaces.
+- Añadir fotos reales de antes/después (ahora es una ilustración generada).
 - Sustituir el isotipo provisional por el logo oficial (SVG) y ajustar los colores de marca si el archivo original difiere.

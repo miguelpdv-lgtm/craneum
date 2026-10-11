@@ -251,3 +251,16 @@ a { color: var(--accent); text-underline-offset: .2em; text-decoration-thickness
   background: var(--line);
   -webkit-mask: var(--mr-wave-mask) 0 50% / 28px 10px repeat-x; mask: var(--mr-wave-mask) 0 50% / 28px 10px repeat-x;
 }
+
+/* ---- Comparador antes / después (olas como línea de corte) -------------- */
+.mr-ba { position: relative; aspect-ratio: 4 / 5; max-width: 100%; border-radius: var(--r-concha); overflow: hidden; background: var(--sand); user-select: none; touch-action: pan-y; }
+.mr-ba canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mr-ba__after { position: absolute; inset: 0; clip-path: inset(0 0 0 var(--split, 50%)); background: var(--surface-2); }
+.mr-ba__line { position: absolute; top: 0; bottom: 0; left: var(--split, 50%); width: 18px; translate: -50% 0; background: var(--fg-strong); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 40'%3E%3Cpath d='M9 0c6 5 6 15 0 20s-6 15 0 20' fill='none' stroke='black' stroke-width='3'/%3E%3C/svg%3E") 0 0 / 18px 40px repeat-y; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 40'%3E%3Cpath d='M9 0c6 5 6 15 0 20s-6 15 0 20' fill='none' stroke='black' stroke-width='3'/%3E%3C/svg%3E") 0 0 / 18px 40px repeat-y; pointer-events: none; }
+.mr-ba__knob { position: absolute; top: 50%; left: var(--split, 50%); translate: -50% -50%; width: 48px; height: 48px; border-radius: 50%; background: var(--fg-strong); color: var(--bg); display: grid; place-items: center; box-shadow: var(--sh-2); pointer-events: none; }
+.mr-ba__knob svg { width: 24px; height: 24px; }
+.mr-ba__tag { position: absolute; bottom: var(--sp-4); }
+.mr-ba__tag--l { left: var(--sp-4); }
+.mr-ba__tag--r { right: var(--sp-4); }
+.mr-ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+.mr-ba input:focus-visible ~ .mr-ba__knob { outline: 3px solid var(--focus); outline-offset: 3px; }
