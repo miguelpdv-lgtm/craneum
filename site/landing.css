@@ -47,13 +47,16 @@
 .lp-hero__lead { font-size: var(--fs-md); max-width: 34ch; color: var(--mr-espuma-50); }
 .lp-hero__sea { position: absolute; left: 0; right: 0; bottom: 0; height: clamp(80px, 9vw, 120px); z-index: 4; pointer-events: none; }
 .lp-hero__sea canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+/* Móvil: la fachada pasa a ser el fondo del bloque de texto, bajo una capa
+   de abismo, y las olas rizadas cierran el bloque por abajo. */
 @media (max-width: 860px) {
-  .lp-hero { display: flex; flex-direction: column; min-height: 0; }
-  .lp-hero__left { display: none; }
-  .lp-hero__right { position: relative; order: 2; left: 0; height: 280px; }
-  .lp-hero__right img { object-position: 58% 0; }
-  .lp-hero__foam { display: none; }
-  .lp-hero__copy { position: relative; order: 1; width: 100%; padding-block: var(--sp-8) var(--sp-7); padding-right: clamp(16px, 4vw, 40px); }
+  .lp-hero { min-height: 0; }
+  .lp-hero__left, .lp-hero__foam { display: none; }
+  .lp-hero__right { left: 0; }
+  .lp-hero__right img { object-position: 62% 30%; }
+  .lp-hero__right::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(15 50 54 / .72) 0%, rgb(15 50 54 / .82) 55%, rgb(15 50 54 / .9) 100%); }
+  .lp-hero__copy { position: relative; width: 100%; padding-block: var(--sp-6) calc(76px + var(--sp-4)); padding-right: clamp(16px, 4vw, 40px); gap: var(--sp-3); }
+  .lp-hero__sea { height: 76px; }
 }
 @media (prefers-reduced-motion: reduce) { .lp-hero__left, .lp-hero__foam { animation: none; } }
 
