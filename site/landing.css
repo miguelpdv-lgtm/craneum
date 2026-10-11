@@ -50,12 +50,12 @@
 /* Móvil: la fachada pasa a ser el fondo del bloque de texto, bajo una capa
    de abismo, y las olas rizadas cierran el bloque por abajo. */
 @media (max-width: 860px) {
-  .lp-hero { min-height: 0; }
+  .lp-hero { min-height: clamp(540px, 82svh, 720px); display: flex; align-items: flex-end; }
   .lp-hero__left, .lp-hero__foam { display: none; }
   .lp-hero__right { left: 0; }
   .lp-hero__right img { object-position: 62% 30%; }
-  .lp-hero__right::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(15 50 54 / .72) 0%, rgb(15 50 54 / .82) 55%, rgb(15 50 54 / .9) 100%); }
-  .lp-hero__copy { position: relative; width: 100%; padding-block: var(--sp-6) calc(76px + var(--sp-4)); padding-right: clamp(16px, 4vw, 40px); gap: var(--sp-3); }
+  .lp-hero__right::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(15 50 54 / .35) 0%, rgb(15 50 54 / .55) 35%, rgb(15 50 54 / .88) 70%, rgb(15 50 54 / .95) 100%); }
+  .lp-hero__copy { position: relative; width: 100%; padding-block: var(--sp-8) calc(76px + var(--sp-6)); padding-right: clamp(16px, 4vw, 40px); gap: var(--sp-4); }
   .lp-hero__sea { height: 76px; }
 }
 @media (prefers-reduced-motion: reduce) { .lp-hero__left, .lp-hero__foam { animation: none; } }
