@@ -7,6 +7,15 @@
 <meta name="description" content="Marea Rizada: expertos en salud capilar. Recuperamos tus rizos con diagnóstico, corte rizo a rizo y rutinas para cada patrón, del 2A al 4C.">
 <meta property="og:title" content="Marea Rizada · Recuperamos tus rizos">
 <meta property="og:description" content="Expertos en salud capilar. Diagnóstico, corte rizo a rizo y rutinas para cada patrón.">
+<script>
+  /* Intro del logo: una vez por sesión y nunca con "reducir movimiento". */
+  (function () {
+    try {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches || sessionStorage.getItem('mr-intro-seen')) return;
+    } catch (e) {}
+    document.documentElement.classList.add('mr-intro-pending');
+  })();
+</script>
 <link rel="icon" href="assets/marea-mark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,8 +33,7 @@
     <symbol id="mr-mark" viewBox="0 0 100 100">
       <g clip-path="url(#mr-clip)">
         <rect width="100" height="100" fill="var(--mark-sand, #CDAA9C)"/>
-        <path d="M64 19c5 1.5 8.5 5 10 10" fill="none" stroke="var(--mark-foam, #FFFFFF)" stroke-width="2.6" stroke-linecap="round"/>
-        <circle cx="77.5" cy="34" r="1.8" fill="var(--mark-foam, #FFFFFF)"/>
+        <path d="M57 26q2.8-2.8 5.6 0q2.8-2.8 5.6 0M69 18q2-2 4 0q2-2 4 0" fill="none" stroke="var(--mark-foam, #FFFFFF)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M0 66C12 60 22 58 34 62S56 58 70 56 92 60 100 60V100H0Z" fill="var(--mark-water2, #BDEEEF)"/>
         <path d="M0 60C10 58 18 50 30 50S43 61 52 61 63 48 73 48 88 58 100 57V100H0Z" fill="var(--mark-water, #9EE5E7)"/>
         <g fill="none" stroke="var(--mark-foam, #FFFFFF)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
@@ -42,7 +50,7 @@
   </defs>
 </svg>
 
-<header class="lp-header">
+<header class="lp-header" id="top-nav">
   <div class="mr-wrap">
     <nav class="mr-nav" aria-label="Principal">
       <a class="lp-brand" href="#inicio" aria-label="Marea Rizada, inicio"><svg aria-hidden="true"><use href="#mr-mark"/></svg><b>Marea Rizada</b></a>
@@ -288,6 +296,7 @@
   </div>
 </footer>
 
+<script src="site/intro.js"></script>
 <script src="design-system/tide.js"></script>
 <script src="site/landing.js"></script>
 </body>

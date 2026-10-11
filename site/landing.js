@@ -3,6 +3,12 @@
   const { Tide, curlPath, CURL_TYPES, drawStrands, reduceMotion } = window.MareaRizada;
   const $ = (s, r = document) => r.querySelector(s);
 
+  /* ---- Navbar: transparente dentro del héroe, clara al hacer scroll ---- */
+  const nav = $('#top-nav');
+  const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 24);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
   /* ---- Olas ---------------------------------------------------------- */
   // Olas que suben sobre la foto de la fachada y enlazan con la franja
   new Tide($('#hero-tide'), {
