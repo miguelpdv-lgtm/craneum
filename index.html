@@ -61,34 +61,23 @@
 <main>
   <!-- Héroe -->
   <section class="lp-hero" id="inicio">
-    <div class="mr-wrap lp-hero__grid">
+    <img class="lp-hero__photo" src="assets/fachada.jpg" alt="Fachada del salón Marea Rizada: letrero con el logo sobre la pared verde y, al lado, un mural de una mujer con el pelo rizado y gafas blancas" width="964" height="672" fetchpriority="high">
+    <div class="lp-hero__shade" aria-hidden="true"></div>
+    <div class="mr-wrap lp-hero__inner">
       <div class="lp-hero__copy mr-rise">
-        <span class="mr-eyebrow">Expertos en salud capilar</span>
-        <h1>Recuperamos tus <em class="mr-ripple-text" id="hero-word">rizos</em></h1>
-        <p class="lp-hero__lead">Tu rizo no está roto: ha perdido su ritmo. Lo diagnosticamos, lo cortamos rizo a rizo y te enseñamos a cuidarlo en casa, sea cual sea tu patrón.</p>
+        <span class="mr-eyebrow">Salón especializado en salud capilar</span>
+        <h1>Recuperamos tus rizos</h1>
+        <p class="lp-hero__lead">Tu rizo no está roto: ha perdido su ritmo. Lo diagnosticamos, lo cortamos rizo a rizo y te enseñamos a cuidarlo en casa.</p>
         <div class="lp-hero__ctas">
-          <a class="mr-btn" href="https://ig.me/m/marea.rizada" target="_blank" rel="noopener">Reservar diagnóstico</a>
-          <a class="mr-btn mr-btn--secondary" href="#patron">Descubre tu patrón</a>
+          <a class="mr-btn mr-btn--light" href="https://ig.me/m/marea.rizada" target="_blank" rel="noopener">Reservar diagnóstico</a>
+          <a class="mr-btn mr-btn--outline-light" href="#patron">Descubre tu patrón</a>
         </div>
-        <div class="lp-hero__note">
-          <span class="lp-dots" aria-hidden="true">
-            <span style="background:var(--mr-espuma);color:var(--mr-abismo)">2C</span>
-            <span style="background:var(--mr-concha);color:var(--mr-roca)">3B</span>
-            <span style="background:var(--mr-marea);color:var(--mr-espuma-50)">4A</span>
-          </span>
-          <span>Más de 8.400 personas siguen la marea en Instagram</span>
-        </div>
-      </div>
-      <div class="lp-orb mr-rise" style="animation-delay:.15s">
-        <div class="lp-orb__disc" id="orb">
-          <canvas id="orb-tide" aria-hidden="true"></canvas>
-          <svg class="lp-orb__shine" viewBox="0 0 100 100" aria-hidden="true"><path d="M64 15c6 2 10 6 12 12"/><circle cx="79" cy="32" r="1.4"/></svg>
-        </div>
-        <span class="lp-orb__badge lp-orb__badge--a"><svg viewBox="0 0 26 20" aria-hidden="true"><path d="M2 12c4-6 7-6 9 0s5 6 9 0 3-4 4-2"/></svg>Patrón 3B · definido</span>
-        <span class="lp-orb__badge lp-orb__badge--b"><svg viewBox="0 0 26 20" aria-hidden="true"><path d="M3 4c-2 7 3 12 10 12s11-6 9-12"/></svg>Hidratación profunda</span>
       </div>
     </div>
+    <div class="lp-hero__sea"><canvas id="hero-tide" aria-hidden="true"></canvas></div>
+  </section>
 
+  <section aria-label="Patrones de rizo">
     <div class="lp-band" aria-label="Patrones de rizo del 2A al 4C">
       <div class="lp-band__track" id="band"></div>
     </div>
@@ -209,7 +198,7 @@
   <section class="lp-manifesto" aria-label="Manifiesto">
     <div class="mr-wrap">
       <span class="mr-eyebrow">Por qué Marea Rizada</span>
-      <p>Ningún rizo es difícil. Ninguno hay que <em>domarlo</em>. Cada uno tiene su ritmo, como la marea: sube, baja y siempre vuelve.</p>
+      <p>Ningún rizo es difícil. Ninguno hay que domarlo. Cada uno tiene su ritmo, como la marea: sube, baja y siempre vuelve.</p>
     </div>
     <div class="lp-manifesto__sea"><canvas id="sea-tide" aria-hidden="true"></canvas></div>
   </section>

@@ -101,10 +101,10 @@
   --sp-10: 8rem;    /* pleamar */
 
   /* ---- Formas: radios "guijarro" -------------------------------------- */
+  --r-sello:   3px;     /* botones y chips: esquina de letrero */
   --r-gota:    6px;
   --r-guijarro: 14px;
   --r-concha:  28px 28px 28px 8px;     /* asimétrico, como concha */
-  --r-ola:     999px 999px 24px 24px;  /* arco de ola en tarjetas destacadas */
   --r-pill:    999px;
 
   /* ---- Sombras de agua (difusas, tintadas de abismo) ------------------- */

@@ -8,45 +8,33 @@
 .lp-brand svg { width: 38px; height: 38px; flex: none; }
 .lp-brand b { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; font-variation-settings: "BNCE" 50, "INFM" 60; letter-spacing: .02em; }
 
-/* ---- Héroe -------------------------------------------------------------- */
-.lp-hero { position: relative; padding-top: clamp(2rem, 6vw, 4.5rem); overflow: hidden; }
-.lp-hero__grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--sp-7); align-items: center; }
-.lp-hero__copy { display: flex; flex-direction: column; gap: var(--sp-5); min-width: 0; }
-.lp-hero h1 { font-size: clamp(2.6rem, 6.2vw, 4.9rem); line-height: .95; font-weight: 700; font-variation-settings: "BNCE" var(--rizo-bounce), "INFM" 50; }
-.lp-hero h1 em { font-style: normal; color: var(--accent); display: inline-block; }
-.lp-hero__lead { font-size: var(--fs-md); max-width: 40ch; color: var(--fg); }
-.lp-hero__ctas { display: flex; gap: var(--sp-3); flex-wrap: wrap; }
-.lp-hero__note { display: flex; align-items: center; gap: var(--sp-3); font-size: var(--fs-sm); color: var(--fg-muted); }
-.lp-hero__note .lp-dots { display: flex; }
-.lp-hero__note .lp-dots span { width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--bg); margin-left: -8px; display: grid; place-items: center; font: 600 .62rem/1 var(--font-mono); }
-.lp-hero__note .lp-dots span:first-child { margin-left: 0; }
-
-/* El sol-marea: el isotipo convertido en escena viva */
-.lp-orb { position: relative; width: min(100%, 480px); aspect-ratio: 1; max-width: 100%; justify-self: center; }
-.lp-orb__disc { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 70% 25%, var(--mr-concha-100), var(--mr-concha) 55%, var(--mr-concha-400)); box-shadow: var(--sh-3); }
-.lp-orb__disc canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.lp-orb__shine { position: absolute; inset: 0; pointer-events: none; }
-.lp-orb__shine path, .lp-orb__shine circle { fill: none; stroke: var(--mr-perla); stroke-width: 2.2; stroke-linecap: round; }
-.lp-orb__shine circle { fill: var(--mr-perla); stroke: none; }
-.lp-orb__badge { position: absolute; z-index: 2; display: inline-flex; align-items: center; gap: var(--sp-2); padding: 10px 16px; border-radius: var(--r-pill); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--sh-2); font-size: var(--fs-sm); color: var(--fg-strong); white-space: nowrap; }
-.lp-orb__badge svg { width: 26px; height: 20px; flex: none; }
-.lp-orb__badge svg path { fill: none; stroke: var(--accent); stroke-width: 2.4; stroke-linecap: round; }
-.lp-orb__badge--a { top: 8%; left: -2%; animation: lp-float 7s var(--ease-calma) infinite; }
-.lp-orb__badge--b { bottom: 14%; right: -4%; animation: lp-float 8s var(--ease-calma) infinite reverse; }
-@keyframes lp-float { 50% { transform: translateY(-10px); } }
+/* ---- Héroe: la fachada real del salón -------------------------------- */
+.lp-hero { position: relative; isolation: isolate; overflow: hidden; color: var(--mr-perla); background: var(--mr-abismo); }
+.lp-hero__photo { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 0; }
+/* Sombra de abismo de abajo hacia arriba y desde la izquierda: deja libres el
+   letrero (arriba a la izquierda) y la cara del mural (derecha). */
+.lp-hero__shade { position: absolute; inset: 0; z-index: -1; background:
+  linear-gradient(0deg, rgb(15 50 54 / .95) 0%, rgb(15 50 54 / .78) 34%, rgb(15 50 54 / .25) 58%, rgb(15 50 54 / 0) 72%); }
+.lp-hero__inner { min-height: clamp(600px, 62vw, 900px); display: grid; grid-template-columns: minmax(0, 1fr); align-items: end; gap: var(--sp-6); padding-block: var(--sp-8) clamp(7rem, 12vw, 9.5rem); }
+.lp-hero__copy { display: flex; flex-direction: column; gap: var(--sp-4); max-width: 44rem; min-width: 0; }
+.lp-hero .mr-eyebrow { color: var(--mr-concha-200); }
+.lp-hero h1 { color: var(--mr-perla); font-size: clamp(2.6rem, 5.2vw, 4.6rem); line-height: .95; font-weight: 700; font-variation-settings: "BNCE" var(--rizo-bounce), "INFM" 50; text-shadow: 0 2px 30px rgb(15 50 54 / .35); }
+.lp-hero__lead { font-size: var(--fs-md); max-width: 46ch; color: var(--mr-espuma-50); }
+.lp-hero__ctas { display: flex; gap: var(--sp-4); flex-wrap: wrap; }
+.lp-hero__sea { position: absolute; left: 0; right: 0; bottom: 0; height: clamp(90px, 11vw, 140px); z-index: 0; pointer-events: none; }
+.lp-hero__sea canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 @media (max-width: 860px) {
-  .lp-hero__grid { grid-template-columns: 1fr; gap: var(--sp-6); }
-  .lp-orb { width: min(100%, 360px); }
-  .lp-orb__badge--a { left: 0; }
-  .lp-orb__badge--b { right: 0; }
+  .lp-hero__photo { object-position: 72% 30%; }
+  .lp-hero__inner { min-height: clamp(560px, 88vh, 720px); }
+  .lp-hero__shade { background: linear-gradient(0deg, rgb(15 50 54 / .95) 0%, rgb(15 50 54 / .75) 42%, rgb(15 50 54 / .1) 75%); }
 }
 
 /* ---- Franja de patrones (marquesina) --------------------------------- */
-.lp-band { margin-top: clamp(2.5rem, 6vw, 4rem); background: var(--fg-strong); color: var(--bg); overflow: hidden; padding-block: var(--sp-4); }
+.lp-band { background: var(--water-1); color: var(--fg-strong); overflow: hidden; padding-block: var(--sp-2) var(--sp-4); margin-top: -1px; }
 .lp-band__track { display: flex; gap: var(--sp-7); width: max-content; animation: lp-marquee 38s linear infinite; }
 .lp-band__item { display: flex; align-items: center; gap: var(--sp-3); font-family: var(--font-display); font-size: var(--fs-lg); font-weight: 700; font-variation-settings: "BNCE" 60, "INFM" 60; white-space: nowrap; }
 .lp-band__item svg { width: 76px; height: 30px; overflow: visible; }
-.lp-band__item svg path { fill: none; stroke: var(--accent-soft); stroke-width: 2.6; stroke-linecap: round; }
+.lp-band__item svg path { fill: none; stroke: var(--accent); stroke-width: 2.6; stroke-linecap: round; }
 .lp-band__item small { font: 500 var(--fs-xs)/1 var(--font-body); opacity: .75; font-variation-settings: normal; }
 @keyframes lp-marquee { to { transform: translateX(-50%); } }
 
@@ -122,7 +110,6 @@
 .lp-manifesto { position: relative; background: var(--mr-abismo); color: var(--mr-sal); overflow: hidden; }
 .lp-manifesto .mr-wrap { position: relative; z-index: 1; padding-block: clamp(4rem, 9vw, 7rem) clamp(10rem, 20vw, 14rem); }
 .lp-manifesto p { font-family: var(--font-display); font-size: clamp(1.9rem, 4.6vw, 3.4rem); line-height: 1.15; max-width: 22ch; font-variation-settings: "BNCE" 40, "INFM" 55; text-wrap: balance; }
-.lp-manifesto p em { font-style: normal; color: var(--mr-espuma); }
 .lp-manifesto .mr-eyebrow { color: var(--mr-concha); margin-bottom: var(--sp-5); }
 .lp-manifesto__sea { position: absolute; left: 0; right: 0; bottom: 0; height: clamp(150px, 22vw, 260px); --water-1: #134A50; --water-2: #1C6F75; --water-3: #278E95; --foam: #BDEEEF; }
 .lp-manifesto__sea canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -165,6 +152,6 @@
 .ds-footer__body a { color: inherit; font-weight: 600; }
 
 @media (prefers-reduced-motion: reduce) {
-  .lp-band__track, .lp-orb__badge { animation: none; }
+  .lp-band__track { animation: none; }
   .lp-band { overflow-x: auto; }
 }

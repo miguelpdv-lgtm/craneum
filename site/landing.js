@@ -4,15 +4,13 @@
   const $ = (s, r = document) => r.querySelector(s);
 
   /* ---- Olas ---------------------------------------------------------- */
-  // Dentro del sol del logo: la marea ocupa la mitad baja del círculo
-  new Tide($('#orb-tide'), {
+  // Olas que suben sobre la foto de la fachada y enlazan con la franja
+  new Tide($('#hero-tide'), {
     layers: [
-      { color: '--water-1', base: 0.52, amp: 12, k: 0.016, speed: 0.6, phase: 0.4, curl: 12 },
-      { color: '--water-2', base: 0.62, amp: 14, k: 0.013, speed: 0.85, phase: 2.6, curl: 15 },
-      { color: '--water-3', base: 0.78, amp: 10, k: 0.018, speed: 1.1, phase: 4.2, curl: 10 },
+      { color: '--water-3', base: 0.40, amp: 12, k: 0.010, speed: 0.55, phase: 0.0, curl: 10 },
+      { color: '--water-2', base: 0.58, amp: 14, k: 0.008, speed: 0.80, phase: 2.1, curl: 13 },
+      { color: '--water-1', base: 0.78, amp: 10, k: 0.012, speed: 1.10, phase: 4.0, curl: 9 },
     ],
-    foam: '--mr-perla',
-    foamWidth: 2.4,
   });
   new Tide($('#sea-tide'), {
     layers: [
@@ -27,17 +25,6 @@
       { color: '--water-2', base: 0.62, amp: 14, k: 0.009, speed: 0.8, phase: 3.0, curl: 12 },
       { color: '--water-3', base: 0.80, amp: 10, k: 0.013, speed: 1.0, phase: 5.0, curl: 9 },
     ],
-  });
-
-  /* ---- Palabra que riza ---------------------------------------------- */
-  const word = $('#hero-word');
-  const text = word.textContent;
-  word.setAttribute('aria-label', text);
-  word.textContent = '';
-  [...text].forEach((ch, i) => {
-    const s = document.createElement('span');
-    s.textContent = ch; s.style.setProperty('--i', i); s.setAttribute('aria-hidden', 'true');
-    word.appendChild(s);
   });
 
   /* ---- Franja de patrones ------------------------------------------- */
