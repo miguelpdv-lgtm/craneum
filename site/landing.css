@@ -3,50 +3,59 @@
    ========================================================================== */
 
 /* ---- Cabecera ---------------------------------------------------------- */
-/* La navbar arranca dentro del héroe (transparente, sobre el abismo) y al
-   hacer scroll se convierte en la barra clara habitual. Los colores se
-   cambian redefiniendo los tokens dentro de la cabecera. */
-:root { --lp-nav-h: 84px; }
-.lp-header {
-  position: fixed; left: 0; right: 0; top: 0; z-index: 40;
-  padding-top: calc(env(safe-area-inset-top, 0px) + var(--sp-3));
-  padding-bottom: var(--sp-3);
-}
-.lp-header .mr-nav { transition: background var(--dur-ola) var(--ease-oleaje), border-color var(--dur-ola) var(--ease-oleaje), box-shadow var(--dur-ola) var(--ease-oleaje); }
-.lp-header:not(.is-scrolled) {
-  --fg: var(--mr-espuma-50);
-  --fg-strong: var(--mr-perla);
-  --accent: var(--mr-espuma);
-  --accent-fg: var(--mr-abismo);
-  --warm-soft: var(--mr-concha);
-}
-.lp-header:not(.is-scrolled) .mr-nav { background: transparent; border-color: rgb(255 255 255 / .16); box-shadow: none; backdrop-filter: none; }
-.lp-header.is-scrolled .mr-nav { box-shadow: var(--sh-2); }
+.lp-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; padding-block: var(--sp-3); }
 .lp-brand { display: flex; align-items: center; gap: var(--sp-2); color: var(--fg-strong); text-decoration: none; }
 .lp-brand svg { width: 38px; height: 38px; flex: none; }
 .lp-brand b { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; font-variation-settings: "BNCE" 50, "INFM" 60; letter-spacing: .02em; }
 
-/* ---- Héroe: la fachada real del salón -------------------------------- */
-.lp-hero { position: relative; isolation: isolate; overflow: hidden; color: var(--mr-perla); background: var(--mr-abismo); padding-top: calc(env(safe-area-inset-top, 0px) + var(--lp-nav-h)); }
-.lp-hero__photo { position: absolute; left: 0; right: 0; bottom: 0; top: calc(env(safe-area-inset-top, 0px) + var(--lp-nav-h)); z-index: -2; width: 100%; height: calc(100% - env(safe-area-inset-top, 0px) - var(--lp-nav-h)); max-width: none; object-fit: cover; object-position: 50% 0; }
-/* Sombra de abismo de abajo hacia arriba y desde la izquierda: deja libres el
-   letrero (arriba a la izquierda) y la cara del mural (derecha). */
-.lp-hero__shade { position: absolute; inset: 0; z-index: -1; background:
-  linear-gradient(180deg, var(--mr-abismo) calc(env(safe-area-inset-top, 0px) + var(--lp-nav-h)), rgb(15 50 54 / 0) calc(env(safe-area-inset-top, 0px) + var(--lp-nav-h) + 26px)),
-  linear-gradient(0deg, rgb(15 50 54 / .95) 0%, rgb(15 50 54 / .78) 34%, rgb(15 50 54 / .25) 58%, rgb(15 50 54 / 0) 72%); }
-.lp-hero__inner { min-height: clamp(600px, 62vw, 900px); display: grid; grid-template-columns: minmax(0, 1fr); align-items: end; gap: var(--sp-6); padding-block: var(--sp-8) clamp(7rem, 12vw, 9.5rem); }
-.lp-hero__copy { display: flex; flex-direction: column; gap: var(--sp-4); max-width: 44rem; min-width: 0; }
+/* ---- Héroe: pantalla partida --------------------------------------------
+   Izquierda: rizos reales con el titular encima. Derecha: la fachada limpia.
+   Entre las dos, un borde de ola vertical que fluye, con su línea de espuma. */
+:root {
+  --lp-split: 46%;
+  --lp-edge: 32px;
+  --lp-edge-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 120' preserveAspectRatio='none'%3E%3Cpath d='M0 0H16C30 15 30 45 16 60S2 105 16 120H0Z' fill='black'/%3E%3C/svg%3E");
+  --lp-edge-foam: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 120' preserveAspectRatio='none'%3E%3Cpath d='M16 0C30 15 30 45 16 60S2 105 16 120' fill='none' stroke='black' stroke-width='3'/%3E%3Cpath d='M26.5 30a6 6 0 1 0-6 6 4 4 0 1 0 4-4 2 2 0 1 0-2 2' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.lp-hero { position: relative; isolation: isolate; overflow: hidden; background: var(--mr-abismo); min-height: clamp(560px, 50vw, 760px); }
+.lp-hero__right { position: absolute; top: 0; bottom: 0; right: 0; left: var(--lp-split); }
+.lp-hero__right img { width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 42% 0; display: block; }
+.lp-hero__left {
+  position: absolute; top: 0; bottom: 0; left: 0; width: calc(var(--lp-split) + var(--lp-edge)); z-index: 1;
+  -webkit-mask: linear-gradient(#000 0 0) 0 0 / calc(100% - var(--lp-edge)) 100% no-repeat, var(--lp-edge-mask) 100% 0 / var(--lp-edge) 120px repeat-y;
+          mask: linear-gradient(#000 0 0) 0 0 / calc(100% - var(--lp-edge)) 100% no-repeat, var(--lp-edge-mask) 100% 0 / var(--lp-edge) 120px repeat-y;
+  animation: lp-edge-flow 7s linear infinite;
+}
+.lp-hero__left img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 28%; }
+.lp-hero__left::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(15 50 54 / .92) 0%, rgb(15 50 54 / .55) 38%, rgb(15 50 54 / .1) 70%), linear-gradient(90deg, rgb(15 50 54 / .35), rgb(15 50 54 / 0) 60%); }
+.lp-hero__foam {
+  position: absolute; top: 0; bottom: 0; left: var(--lp-split); width: var(--lp-edge); z-index: 2; pointer-events: none;
+  background: var(--mr-espuma);
+  -webkit-mask: var(--lp-edge-foam) 0 0 / var(--lp-edge) 120px repeat-y;
+          mask: var(--lp-edge-foam) 0 0 / var(--lp-edge) 120px repeat-y;
+  animation: lp-foam-flow 7s linear infinite;
+}
+@keyframes lp-edge-flow { to { -webkit-mask-position: 0 0, 100% 120px; mask-position: 0 0, 100% 120px; } }
+@keyframes lp-foam-flow { to { -webkit-mask-position: 0 120px; mask-position: 0 120px; } }
+.lp-hero__copy {
+  position: absolute; z-index: 3; left: 0; bottom: clamp(5.5rem, 10vw, 8rem); width: calc(var(--lp-split) - 24px);
+  padding-left: max(clamp(16px, 4vw, 40px), calc((100vw - var(--container)) / 2 + clamp(16px, 4vw, 40px))); padding-right: var(--sp-5);
+  display: flex; flex-direction: column; gap: var(--sp-4); color: var(--mr-perla);
+}
 .lp-hero .mr-eyebrow { color: var(--mr-concha-200); }
-.lp-hero h1 { color: var(--mr-perla); font-size: clamp(2.6rem, 5.2vw, 4.6rem); line-height: .95; font-weight: 700; font-variation-settings: "BNCE" var(--rizo-bounce), "INFM" 50; text-shadow: 0 2px 30px rgb(15 50 54 / .35); }
-.lp-hero__lead { font-size: var(--fs-md); max-width: 46ch; color: var(--mr-espuma-50); }
-.lp-hero__ctas { display: flex; gap: var(--sp-4); flex-wrap: wrap; }
-.lp-hero__sea { position: absolute; left: 0; right: 0; bottom: 0; height: clamp(90px, 11vw, 140px); z-index: 0; pointer-events: none; }
+.lp-hero h1 { color: var(--mr-perla); font-size: clamp(2.6rem, 5vw, 4.6rem); line-height: .95; font-weight: 700; font-variation-settings: "BNCE" var(--rizo-bounce), "INFM" 50; text-shadow: 0 2px 30px rgb(15 50 54 / .45); }
+.lp-hero__lead { font-size: var(--fs-md); max-width: 34ch; color: var(--mr-espuma-50); }
+.lp-hero__sea { position: absolute; left: 0; right: 0; bottom: 0; height: clamp(80px, 9vw, 120px); z-index: 4; pointer-events: none; }
 .lp-hero__sea canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 @media (max-width: 860px) {
-  .lp-hero__photo { object-position: 72% 30%; }
-  .lp-hero__inner { min-height: clamp(560px, 88vh, 720px); }
-  .lp-hero__shade { background: linear-gradient(180deg, var(--mr-abismo) calc(env(safe-area-inset-top, 0px) + var(--lp-nav-h)), rgb(15 50 54 / 0) calc(env(safe-area-inset-top, 0px) + var(--lp-nav-h) + 22px)), linear-gradient(0deg, rgb(15 50 54 / .95) 0%, rgb(15 50 54 / .75) 42%, rgb(15 50 54 / .1) 75%); }
+  .lp-hero { display: flex; flex-direction: column; min-height: 0; }
+  .lp-hero__left { position: relative; order: 1; width: 100%; min-height: 540px; -webkit-mask: none; mask: none; animation: none; }
+  .lp-hero__right { position: relative; order: 2; left: 0; height: 280px; }
+  .lp-hero__right img { object-position: 58% 0; }
+  .lp-hero__foam { display: none; }
+  .lp-hero__copy { width: 100%; bottom: calc(280px + 32px); padding-right: clamp(16px, 4vw, 40px); }
 }
+@media (prefers-reduced-motion: reduce) { .lp-hero__left, .lp-hero__foam { animation: none; } }
 
 /* ---- Franja de patrones (marquesina) --------------------------------- */
 .lp-band { background: var(--water-1); color: var(--fg-strong); overflow: hidden; padding-block: var(--sp-2) var(--sp-4); margin-top: -1px; }
@@ -58,7 +67,7 @@
 @keyframes lp-marquee { to { transform: translateX(-50%); } }
 
 /* ---- Secciones -------------------------------------------------------- */
-.lp-section { padding-block: clamp(4rem, 9vw, 7rem); scroll-margin-top: calc(var(--lp-nav-h) + 12px); }
+.lp-section { padding-block: clamp(4rem, 9vw, 7rem); scroll-margin-top: 96px; }
 .lp-section--tint { background: var(--surface-2); }
 .lp-section--sand { background: var(--sand); }
 .lp-head { display: grid; gap: var(--sp-3); max-width: 46rem; margin-bottom: var(--sp-7); }
@@ -178,7 +187,7 @@
 /* ---- Intro: el logo se dibuja y vuela a la navbar -------------------- */
 html.mr-intro-pending::before {
   content: ""; position: fixed; inset: 0; z-index: 99; background: var(--mr-abismo);
-  animation: mr-intro-failsafe 0s 4s forwards; /* si el JS falla, la página aparece igual */
+  animation: mr-intro-failsafe 0s 3s forwards; /* si el JS falla, la página aparece igual */
 }
 @keyframes mr-intro-failsafe { to { visibility: hidden; } }
 html.mr-intro-running { overflow: hidden; }

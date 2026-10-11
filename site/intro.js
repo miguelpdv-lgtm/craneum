@@ -54,25 +54,25 @@
   const run = (node, frames, opts) => { const a = node.animate(frames, Object.assign({ fill: 'both', easing: EASE }, opts)); anims.push(a); return a; };
 
   // 1 · Aparece el disco y se dibuja el aro
-  run(mark, [{ opacity: 0 }, { opacity: 1 }], { duration: 500 });
-  run($('.mr-intro__stage'), [{ transform: 'scale(.86)' }, { transform: 'scale(1)' }], { duration: 900 });
-  run($('.i-ring'), [{ strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDasharray: 1, strokeDashoffset: 0 }], { duration: 1000 });
+  run(mark, [{ opacity: 0 }, { opacity: 1 }], { duration: 300 });
+  run($('.mr-intro__stage'), [{ transform: 'scale(.86)' }, { transform: 'scale(1)' }], { duration: 550 });
+  run($('.i-ring'), [{ strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDasharray: 1, strokeDashoffset: 0 }], { duration: 550 });
   // 2 · Sale el sol
-  run($('.i-sun'), [{ opacity: 0 }, { opacity: 1 }], { duration: 600, delay: 150 });
+  run($('.i-sun'), [{ opacity: 0 }, { opacity: 1 }], { duration: 350, delay: 80 });
   // 3 · Sube la marea, con un vaivén
   run($('.i-water'), [
     { transform: 'translate(0px, 46px)' },
     { transform: 'translate(-6px, -3px)', offset: .7 },
     { transform: 'translate(0px, 0px)' },
-  ], { duration: 1100, delay: 350 });
+  ], { duration: 650, delay: 180 });
   // 4 · La espuma se enrosca
   el.querySelectorAll('.i-foam path').forEach((p, i) => {
-    run(p, [{ strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDasharray: 1, strokeDashoffset: 0 }], { duration: 700, delay: 950 + i * 70 });
+    run(p, [{ strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDasharray: 1, strokeDashoffset: 0 }], { duration: 400, delay: 480 + i * 40 });
   });
   // 5 · Gaviotas y nombre
-  run($('.i-gulls'), [{ opacity: 0, transform: 'translate(-6px, 4px)' }, { opacity: 1, transform: 'translate(0, 0)' }], { duration: 600, delay: 1350 });
+  run($('.i-gulls'), [{ opacity: 0, transform: 'translate(-6px, 4px)' }, { opacity: 1, transform: 'translate(0, 0)' }], { duration: 350, delay: 700 });
   word.querySelectorAll('span').forEach((s, i) => {
-    run(s, [{ opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 700, delay: 1050 + i * 140 });
+    run(s, [{ opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 420, delay: 520 + i * 90 });
   });
 
   let leaving = false;
@@ -83,7 +83,7 @@
     const from = mark.getBoundingClientRect();
     const to = target.getBoundingClientRect();
     const dx = to.left - from.left, dy = to.top - from.top, s = to.width / from.width;
-    const d = fast ? 450 : 900;
+    const d = fast ? 350 : 560;
     word.animate([{ opacity: 1 }, { opacity: 0, transform: 'translateX(-12px)' }], { duration: d * .35, fill: 'forwards', easing: EASE });
     $('.mr-intro__skip').animate([{ opacity: .7 }, { opacity: 0 }], { duration: 200, fill: 'forwards' });
     $('.mr-intro__bg').animate([{ opacity: 1 }, { opacity: 0 }], { duration: d * .8, delay: d * .2, fill: 'forwards', easing: 'ease-out' });
@@ -97,7 +97,7 @@
       try { sessionStorage.setItem('mr-intro-seen', '1'); } catch (e) {}
     });
   }
-  const timer = setTimeout(() => leave(false), 2500);
+  const timer = setTimeout(() => leave(false), 1050);
   const skip = () => { clearTimeout(timer); leave(true); };
   el.addEventListener('click', skip);
   window.addEventListener('keydown', skip, { once: true });
