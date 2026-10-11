@@ -1,0 +1,253 @@
+/* ==========================================================================
+   MAREA RIZADA · Base + componentes
+   Todo color sale de tokens.css. Nada de literales de un solo tema.
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-variation-settings: "BNCE" var(--rizo-bounce), "INFM" var(--rizo-informal);
+  color: var(--fg-strong);
+  line-height: var(--lh-snug);
+  text-wrap: balance;
+  margin: 0;
+  font-weight: 650;
+}
+p { margin: 0; text-wrap: pretty; }
+a { color: var(--accent); text-underline-offset: .2em; text-decoration-thickness: 1.5px; }
+:focus-visible { outline: 2.5px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--accent-soft); color: var(--fg-strong); }
+
+.mr-wrap {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 40px);
+}
+
+/* ---- Etiquetas ---------------------------------------------------------- */
+.mr-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--warm);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.mr-eyebrow::before {
+  content: "";
+  width: 22px; height: 8px;
+  background: currentColor;
+  -webkit-mask: var(--mr-wave-mask) center / 22px 8px no-repeat;
+          mask: var(--mr-wave-mask) center / 22px 8px no-repeat;
+}
+.mr-lead { font-size: var(--fs-md); color: var(--fg-muted); max-width: var(--measure); }
+.mr-mono { font-family: var(--font-mono); font-size: var(--fs-xs); font-variant-numeric: tabular-nums; }
+
+/* Máscara de ola compartida (data URI: forma, el color lo pone el CSS) */
+:root {
+  --mr-wave-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 8'%3E%3Cpath d='M1 5.5c2.5 0 2.5-3 5-3s2.5 3 5 3 2.5-3 5-3 2.5 3 5 3' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  --mr-swell-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' preserveAspectRatio='none'%3E%3Cpath d='M0 7C10 7 10 1 20 1S30 7 40 7V40H0z' fill='black'/%3E%3C/svg%3E");
+  --mr-crest-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 10' preserveAspectRatio='none'%3E%3Cpath d='M0 10V5C10 5 10 0 20 0S30 5 40 5v5z' fill='black'/%3E%3C/svg%3E");
+}
+
+/* ---- Botones ----------------------------------------------------------- */
+.mr-btn {
+  --btn-bg: var(--accent);
+  --btn-fg: var(--accent-fg);
+  --btn-fill: var(--fg-strong);
+  --btn-fill-fg: var(--bg);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: 48px;
+  padding: 0 var(--sp-5);
+  border: 1.5px solid var(--btn-bg);
+  border-radius: var(--r-pill);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font: 600 var(--fs-base)/1 var(--font-body);
+  letter-spacing: .01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--dur-ola) var(--ease-oleaje), transform var(--dur-gota) ease;
+}
+/* La marea sube dentro del botón al pasar por encima */
+.mr-btn::before {
+  content: "";
+  position: absolute;
+  inset: -10px -40px 0;
+  z-index: -1;
+  background: var(--btn-fill);
+  -webkit-mask: var(--mr-crest-mask) 0 0 / 40px 10px repeat-x, linear-gradient(#000 0 0) 0 10px / 100% 100% no-repeat;
+          mask: var(--mr-crest-mask) 0 0 / 40px 10px repeat-x, linear-gradient(#000 0 0) 0 10px / 100% 100% no-repeat;
+  transform: translateY(105%);
+  transition: transform var(--dur-ola) var(--ease-oleaje);
+  animation: mr-crest-drift 1.6s linear infinite paused;
+}
+.mr-btn:hover::before, .mr-btn:focus-visible::before { transform: translateY(0); animation-play-state: running; }
+.mr-btn:hover, .mr-btn:focus-visible { color: var(--btn-fill-fg); }
+.mr-btn:active { transform: scale(.97); }
+.mr-btn--secondary { --btn-bg: transparent; --btn-fg: var(--fg-strong); --btn-fill: var(--accent); --btn-fill-fg: var(--accent-fg); border-color: var(--fg-strong); }
+.mr-btn--warm { --btn-bg: var(--warm-soft); --btn-fg: var(--fg-strong); --btn-fill: var(--warm); --btn-fill-fg: var(--bg); }
+.mr-btn--ghost { --btn-bg: transparent; --btn-fg: var(--accent); --btn-fill: var(--accent-soft); --btn-fill-fg: var(--fg-strong); border-color: transparent; padding-inline: var(--sp-3); }
+.mr-btn--sm { min-height: 36px; padding-inline: var(--sp-4); font-size: var(--fs-sm); }
+.mr-btn svg { width: 18px; height: 18px; flex: none; }
+
+@keyframes mr-crest-drift { to { -webkit-mask-position: 40px 0, 0 10px; mask-position: 40px 0, 0 10px; } }
+
+/* ---- Chips: tipo de rizo / servicio ------------------------------------ */
+.mr-chip {
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  min-height: 34px; padding: 0 var(--sp-3) 0 var(--sp-2);
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  color: var(--fg);
+  font: 500 var(--fs-sm)/1 var(--font-body);
+  cursor: pointer;
+  transition: background var(--dur-ola) var(--ease-oleaje), border-color var(--dur-ola) var(--ease-oleaje);
+}
+.mr-chip .mr-chip__code {
+  font-family: var(--font-mono); font-size: .7rem;
+  display: grid; place-items: center;
+  width: 26px; height: 22px; border-radius: var(--r-pill);
+  background: var(--surface-2); color: var(--accent);
+}
+.mr-chip[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--fg-strong); }
+.mr-chip[aria-pressed="true"] .mr-chip__code { background: var(--accent); color: var(--accent-fg); }
+
+.mr-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px; border-radius: var(--r-pill);
+  font: 600 .72rem/1.4 var(--font-body); letter-spacing: .04em; text-transform: uppercase;
+  background: var(--sand); color: var(--warm);
+}
+.mr-badge--aqua { background: var(--surface-2); color: var(--accent); }
+
+/* ---- Tarjeta de servicio ----------------------------------------------- */
+.mr-card {
+  position: relative;
+  display: flex; flex-direction: column; gap: var(--sp-3);
+  padding: var(--sp-5);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-concha);
+  min-width: 0;
+  transition: transform var(--dur-ola) var(--ease-oleaje), box-shadow var(--dur-ola) var(--ease-oleaje);
+}
+.mr-card:hover { transform: translateY(-4px); box-shadow: var(--sh-2); }
+.mr-card h3 { font-size: var(--fs-lg); }
+.mr-card p { color: var(--fg-muted); font-size: var(--fs-sm); }
+.mr-card__meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: var(--sp-3); border-top: 1px dashed var(--line); }
+.mr-card__price { font-family: var(--font-display); font-size: var(--fs-md); color: var(--fg-strong); font-weight: 700; font-variant-numeric: tabular-nums; }
+.mr-card__icon { width: 56px; height: 56px; border-radius: 50%; background: var(--surface-2); display: grid; place-items: center; color: var(--accent); }
+.mr-card__icon svg { width: 34px; height: 34px; }
+
+.mr-card--feature {
+  border-radius: var(--r-ola);
+  padding-top: var(--sp-8);
+  background: linear-gradient(180deg, var(--surface-2), var(--surface) 60%);
+  text-align: center; align-items: center;
+}
+
+/* ---- Formulario -------------------------------------------------------- */
+.mr-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.mr-field label { font-weight: 600; font-size: var(--fs-sm); color: var(--fg-strong); }
+.mr-field .mr-hint { font-size: var(--fs-xs); color: var(--fg-muted); }
+.mr-input, .mr-select, .mr-textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 16px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--r-guijarro);
+  background: var(--surface);
+  color: var(--fg-strong);
+  font: 400 var(--fs-base)/1.4 var(--font-body);
+  transition: border-color var(--dur-ola) var(--ease-oleaje), box-shadow var(--dur-ola) var(--ease-oleaje);
+}
+.mr-textarea { min-height: 96px; resize: vertical; }
+.mr-input:focus, .mr-select:focus, .mr-textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent); }
+.mr-input[aria-invalid="true"] { border-color: var(--alert); }
+.mr-error { color: var(--alert); font-size: var(--fs-xs); font-weight: 600; }
+
+/* Control deslizante como nivel de marea */
+.mr-range { -webkit-appearance: none; appearance: none; width: 100%; height: 28px; background: transparent; cursor: pointer; }
+.mr-range::-webkit-slider-runnable-track { height: 10px; border-radius: 99px; background: linear-gradient(90deg, var(--accent) var(--fill, 50%), var(--line) var(--fill, 50%)); }
+.mr-range::-moz-range-track { height: 10px; border-radius: 99px; background: var(--line); }
+.mr-range::-moz-range-progress { height: 10px; border-radius: 99px; background: var(--accent); }
+.mr-range::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; margin-top: -8px; border-radius: 50%; background: var(--surface); border: 3px solid var(--accent); box-shadow: var(--sh-1); }
+.mr-range::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--surface); border: 3px solid var(--accent); }
+
+/* ---- Testimonio -------------------------------------------------------- */
+.mr-quote {
+  position: relative;
+  padding: var(--sp-6);
+  border-radius: var(--r-concha);
+  background: var(--sand);
+  min-width: 0;
+}
+.mr-quote blockquote { margin: 0; font-family: var(--font-display); font-size: var(--fs-lg); line-height: 1.35; color: var(--fg-strong); font-variation-settings: "BNCE" 20, "INFM" 50; }
+.mr-quote figcaption { margin-top: var(--sp-4); display: flex; align-items: center; gap: var(--sp-3); font-size: var(--fs-sm); color: var(--fg-muted); }
+.mr-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--warm-soft); color: var(--fg-strong); display: grid; place-items: center; font-weight: 700; }
+
+/* ---- Toast / aviso ---------------------------------------------------- */
+.mr-toast {
+  display: flex; gap: var(--sp-3); align-items: center;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-guijarro);
+  background: var(--fg-strong); color: var(--bg);
+  box-shadow: var(--sh-2);
+  font-size: var(--fs-sm);
+}
+.mr-toast svg { width: 22px; height: 22px; color: var(--accent-soft); flex: none; }
+
+/* ---- Navegación -------------------------------------------------------- */
+.mr-nav {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+}
+.mr-nav__links { display: flex; gap: var(--sp-5); font-weight: 500; font-size: var(--fs-sm); }
+.mr-nav__links a { color: var(--fg); text-decoration: none; position: relative; }
+.mr-nav__links a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 6px;
+  background: var(--accent);
+  -webkit-mask: var(--mr-wave-mask) 0 0 / 16px 6px repeat-x; mask: var(--mr-wave-mask) 0 0 / 16px 6px repeat-x;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--dur-ola) var(--ease-oleaje);
+}
+.mr-nav__links a:hover::after, .mr-nav__links a[aria-current="page"]::after { transform: scaleX(1); }
+@media (max-width: 640px) { .mr-nav__links { display: none; } }
+
+/* ---- Separador de ola -------------------------------------------------- */
+.mr-divider {
+  height: 14px; width: 100%;
+  background: var(--line);
+  -webkit-mask: var(--mr-wave-mask) 0 50% / 28px 10px repeat-x; mask: var(--mr-wave-mask) 0 50% / 28px 10px repeat-x;
+}

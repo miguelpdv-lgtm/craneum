@@ -1,0 +1,179 @@
+/* ==========================================================================
+   MAREA RIZADA · Design tokens
+   Concepto: cada rizo es una ola. La paleta sale del logo (espuma aqua sobre
+   arena rosada, rotulado en gris roca) y se enfría hacia la sal marina para
+   que el aqua sea el protagonista.
+   Layout: columna editorial de 72rem que "respira" entre franjas de marea.
+   ========================================================================== */
+
+:root {
+  /* ---- Paleta base (marca) ---------------------------------------------- */
+  --mr-espuma:   #9EE5E7;  /* aqua del logo · color héroe */
+  --mr-marea:    #1C6F75;  /* aqua profundo · acciones y texto de acento */
+  --mr-abismo:   #0F3236;  /* fondo marino · superficies oscuras */
+  --mr-concha:   #CDAA9C;  /* arena rosada del sol del logo */
+  --mr-arcilla:  #9A5B49;  /* concha tostada · acento cálido legible */
+  --mr-roca:     #3D4643;  /* gris del rotulado · texto */
+  --mr-sal:      #F2F8F7;  /* sal marina · fondo claro (frío, no crema) */
+  --mr-perla:    #FFFFFF;
+
+  /* ---- Escala "espuma" (tonal aqua) ------------------------------------- */
+  --mr-espuma-50:  #EFFBFB;
+  --mr-espuma-100: #D8F5F6;
+  --mr-espuma-200: #BDEEEF;
+  --mr-espuma-300: #9EE5E7;
+  --mr-espuma-400: #6FCFD3;
+  --mr-espuma-500: #3FB0B6;
+  --mr-espuma-600: #278E95;
+  --mr-espuma-700: #1C6F75;
+  --mr-espuma-800: #155257;
+  --mr-espuma-900: #0F3236;
+
+  /* ---- Escala "concha" (tonal arena rosada) ----------------------------- */
+  --mr-concha-50:  #FBF4F1;
+  --mr-concha-100: #F3E3DC;
+  --mr-concha-200: #E6CCC1;
+  --mr-concha-300: #CDAA9C;
+  --mr-concha-400: #B88A79;
+  --mr-concha-500: #9A5B49;
+  --mr-concha-600: #7A4436;
+
+  /* ---- Roles semánticos (tema claro) ----------------------------------- */
+  --bg:          var(--mr-sal);
+  --surface:     var(--mr-perla);
+  --surface-2:   var(--mr-espuma-50);
+  --sand:        var(--mr-concha-100);
+  --fg:          var(--mr-roca);
+  --fg-strong:   #1F2725;
+  --fg-muted:    #5F6B68;
+  --line:        #D3E3E1;
+  --accent:      var(--mr-marea);
+  --accent-fg:   var(--mr-perla);
+  --accent-soft: var(--mr-espuma);
+  --warm:        var(--mr-arcilla);
+  --warm-soft:   var(--mr-concha);
+  --water-1:     #BDEEEF;   /* capa lejana */
+  --water-2:     #9EE5E7;   /* capa media (logo) */
+  --water-3:     #6FCFD3;   /* capa cercana */
+  --foam:        #FFFFFF;   /* trazo de los rizos sobre el agua */
+  --sky:         var(--mr-concha-100);
+  --focus:       #278E95;
+  --ok:          #2F7D5B;
+  --alert:       #A8452E;
+  --shadow-tint: 15 50 54;  /* rgb de abismo para sombras */
+
+  /* ---- Tipografía ------------------------------------------------------- */
+  --font-display: "Shantell Sans", "Comic Neue", "Segoe Print", ui-rounded, system-ui, sans-serif;
+  --font-body:    "Figtree", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-mono:    "Martian Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Ejes de Shantell Sans: BNCE (rebote) e INFM (informalidad) */
+  --rizo-bounce: 40;   /* -100…100 · cuánto "rizan" las letras */
+  --rizo-informal: 30; /* 0…100   · cuánto se acerca al rotulado a mano */
+
+  /* Escala 1.250 (tercera mayor) sobre 1rem */
+  --fs-xs:   0.8rem;
+  --fs-sm:   0.9rem;
+  --fs-base: 1rem;
+  --fs-md:   1.25rem;
+  --fs-lg:   1.563rem;
+  --fs-xl:   1.953rem;
+  --fs-2xl:  2.441rem;
+  --fs-3xl:  3.052rem;
+  --fs-4xl:  clamp(2.6rem, 7vw, 4.768rem);
+  --fs-5xl:  clamp(3.2rem, 11vw, 7.451rem);
+
+  --lh-tight: 1.05;
+  --lh-snug:  1.25;
+  --lh-body:  1.6;
+  --tracking-label: 0.12em;
+
+  /* ---- Espaciado (base 4, nombrado por ritmo de ola) ------------------- */
+  --sp-1: 0.25rem;  /* gota */
+  --sp-2: 0.5rem;   /* burbuja */
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;     /* ola corta */
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;     /* ola */
+  --sp-7: 3rem;
+  --sp-8: 4rem;     /* marea */
+  --sp-9: 6rem;
+  --sp-10: 8rem;    /* pleamar */
+
+  /* ---- Formas: radios "guijarro" -------------------------------------- */
+  --r-gota:    6px;
+  --r-guijarro: 14px;
+  --r-concha:  28px 28px 28px 8px;     /* asimétrico, como concha */
+  --r-ola:     999px 999px 24px 24px;  /* arco de ola en tarjetas destacadas */
+  --r-pill:    999px;
+
+  /* ---- Sombras de agua (difusas, tintadas de abismo) ------------------- */
+  --sh-1: 0 1px 2px rgb(var(--shadow-tint) / .06), 0 2px 8px rgb(var(--shadow-tint) / .05);
+  --sh-2: 0 4px 14px rgb(var(--shadow-tint) / .08), 0 14px 40px -12px rgb(var(--shadow-tint) / .16);
+  --sh-3: 0 24px 60px -20px rgb(var(--shadow-tint) / .30);
+
+  /* ---- Movimiento ------------------------------------------------------- */
+  --dur-gota:    120ms;   /* feedback inmediato */
+  --dur-ola:     420ms;   /* transiciones de UI */
+  --dur-marea:   1200ms;  /* entradas de sección */
+  --dur-pleamar: 9s;      /* bucles ambientales */
+  --ease-oleaje:  cubic-bezier(.45, .05, .25, 1);   /* entra suave, rompe y se asienta */
+  --ease-resaca:  cubic-bezier(.6, -.25, .3, 1.35); /* retrocede antes de avanzar */
+  --ease-calma:   cubic-bezier(.37, 0, .63, 1);     /* senoidal, para bucles */
+
+  --container: 72rem;
+  --measure: 65ch;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:          #0B2427;
+    --surface:     #10313A;
+    --surface-2:   #133A3F;
+    --sand:        #2E3A39;
+    --fg:          #DCEBE9;
+    --fg-strong:   #F4FBFA;
+    --fg-muted:    #94ADAA;
+    --line:        #23484D;
+    --accent:      #9EE5E7;
+    --accent-fg:   #0B2427;
+    --accent-soft: #1C6F75;
+    --warm:        #E2BFB1;
+    --warm-soft:   #8E6A5D;
+    --water-1:     #134A50;
+    --water-2:     #1C6F75;
+    --water-3:     #278E95;
+    --foam:        #BDEEEF;
+    --sky:         #0B2427;
+    --focus:       #9EE5E7;
+    --ok:          #7FD3AE;
+    --alert:       #F0A08A;
+    --shadow-tint: 0 0 0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:          #0B2427;
+  --surface:     #10313A;
+  --surface-2:   #133A3F;
+  --sand:        #2E3A39;
+  --fg:          #DCEBE9;
+  --fg-strong:   #F4FBFA;
+  --fg-muted:    #94ADAA;
+  --line:        #23484D;
+  --accent:      #9EE5E7;
+  --accent-fg:   #0B2427;
+  --accent-soft: #1C6F75;
+  --warm:        #E2BFB1;
+  --warm-soft:   #8E6A5D;
+  --water-1:     #134A50;
+  --water-2:     #1C6F75;
+  --water-3:     #278E95;
+  --foam:        #BDEEEF;
+  --sky:         #0B2427;
+  --focus:       #9EE5E7;
+  --ok:          #7FD3AE;
+  --alert:       #F0A08A;
+  --shadow-tint: 0 0 0;
+  color-scheme: dark;
+}

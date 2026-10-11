@@ -1,0 +1,92 @@
+/* ==========================================================================
+   MAREA RIZADA · Movimiento
+   Reglas: todo movimiento imita agua. Nada aparece de golpe; nada rebota
+   como goma. Los bucles son lentos (pleamar) y se detienen con
+   prefers-reduced-motion.
+   ========================================================================== */
+
+/* ---- Indicador de carga: la marea sube dentro del círculo del logo ------- */
+.mr-tide-loader {
+  --level: 55%;
+  position: relative;
+  width: 96px; aspect-ratio: 1; max-width: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--sky);
+  border: 2px solid var(--line);
+  isolation: isolate;
+}
+.mr-tide-loader::before, .mr-tide-loader::after {
+  content: "";
+  position: absolute; left: -100%; width: 300%;
+  top: calc(100% - var(--level));
+  bottom: -10%;
+  -webkit-mask: var(--mr-crest-mask) 0 0 / 33.333% 14px repeat-x, linear-gradient(#000 0 0) 0 13px / 100% 100% no-repeat;
+          mask: var(--mr-crest-mask) 0 0 / 33.333% 14px repeat-x, linear-gradient(#000 0 0) 0 13px / 100% 100% no-repeat;
+  transition: top var(--dur-marea) var(--ease-oleaje);
+}
+.mr-tide-loader::before { background: var(--water-1); animation: mr-tide-x 3.4s linear infinite reverse; transform: translateY(-4px); }
+.mr-tide-loader::after  { background: var(--water-3); animation: mr-tide-x 2.2s linear infinite; }
+.mr-tide-loader > span {
+  position: absolute; inset: 0; z-index: 1;
+  display: grid; place-items: center;
+  font: 600 var(--fs-sm)/1 var(--font-mono); color: var(--fg-strong);
+}
+@keyframes mr-tide-x { to { transform: translateX(33.333%); } }
+.mr-tide-loader.is-filling { animation: mr-fill 4s var(--ease-calma) infinite alternate; }
+@property --level { syntax: "<percentage>"; inherits: true; initial-value: 55%; }
+@keyframes mr-fill { from { --level: 12%; } to { --level: 92%; } }
+
+/* ---- Trazo que se dibuja (rizos e iconos) ------------------------------ */
+.mr-draw path {
+  stroke-dasharray: var(--len, 600);
+  stroke-dashoffset: 0;
+}
+.mr-draw.is-drawing path { animation: mr-draw var(--dur-marea) var(--ease-oleaje) both; }
+@keyframes mr-draw { from { stroke-dashoffset: var(--len, 600); } to { stroke-dashoffset: 0; } }
+
+/* ---- Texto que riza: ondula el eje BNCE letra a letra ------------------- */
+.mr-ripple-text span {
+  display: inline-block;
+  animation: mr-ripple 2.6s var(--ease-calma) infinite;
+  animation-delay: calc(var(--i) * 90ms);
+}
+@keyframes mr-ripple {
+  0%, 100% { transform: translateY(0); font-variation-settings: "BNCE" -40, "INFM" var(--rizo-informal); }
+  50%      { transform: translateY(-0.08em); font-variation-settings: "BNCE" 100, "INFM" var(--rizo-informal); }
+}
+
+/* ---- Burbujas de espuma ------------------------------------------------ */
+.mr-bubbles { position: relative; overflow: hidden; }
+.mr-bubbles i {
+  position: absolute; bottom: -12px;
+  width: var(--s, 8px); height: var(--s, 8px);
+  border-radius: 50%;
+  border: 1.5px solid var(--foam);
+  opacity: .9;
+  animation: mr-bubble var(--d, 6s) var(--ease-calma) infinite;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes mr-bubble {
+  0%   { transform: translate(0, 0); opacity: 0; }
+  15%  { opacity: .9; }
+  50%  { transform: translate(10px, -110px); }
+  100% { transform: translate(-6px, -230px); opacity: 0; }
+}
+
+/* ---- Entrada de sección: sube como la marea desde un estado visible ---- */
+.mr-rise { animation: mr-rise var(--dur-marea) var(--ease-oleaje) both; }
+@keyframes mr-rise { from { transform: translateY(18px); opacity: .35; } to { transform: none; opacity: 1; } }
+
+/* ---- Demostración de curvas de easing --------------------------------- */
+.mr-ease-dot { animation: mr-ease-x 2.4s infinite alternate; }
+@keyframes mr-ease-x { from { transform: translateX(0); } to { transform: translateX(var(--travel, 220px)); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .mr-tide-loader::before, .mr-tide-loader::after, .mr-tide-loader.is-filling,
+  .mr-ripple-text span, .mr-bubbles i, .mr-rise, .mr-ease-dot, .mr-btn::before {
+    animation: none !important;
+  }
+  .mr-draw.is-drawing path { animation: none; }
+  .mr-bubbles i { opacity: .5; }
+}
